@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import { Text, View, Button } from 'react-native';
 import DeckListItem from './DeckListItem'
+// import DeckDetail from './DeckDetail'
 
 class AllDecks extends Component {
   render() {
@@ -9,17 +10,24 @@ class AllDecks extends Component {
       <View>
         <Text>All Decks!</Text>
 
-        <DeckListItem deckTitle={'Speak French'}
-                      numCards={3}
+        <DeckListItem
+                      />
+                      <Button
+                         title="Deck Detail"
+                         onPress={() => this.props.navigation.navigate('DeckDetail')}
+                       >
+                      </Button>
+
+        <DeckListItem
                       />
 
-        <DeckListItem deckTitle={'Speak Russian'}
-                      numCards={7}
+        <DeckListItem
                       />
 
-        <DeckListItem deckTitle={'Earth Science'}
-                      numCards={12}
-                      />
+        <Button
+          title="New Deck"
+          onPress={() => this.props.navigation.navigate('NewDeck')}
+        />
 
       </View>
     );

@@ -21,6 +21,13 @@ class Quiz extends Component {
             >
            </Button>
            <Text>7 of 15 cards</Text>
+
+           <Button
+              title="Cancel Quiz"
+              onPress={() => this.props.navigation.navigate('DeckDetail')}
+
+            >
+            </Button>
         </View>
 
     );

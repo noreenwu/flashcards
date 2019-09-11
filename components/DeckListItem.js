@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
 import { Text, View, Button } from 'react-native';
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 
 class DeckListItem extends Component {
@@ -10,22 +10,18 @@ class DeckListItem extends Component {
 
     return (
         <View>
-           <Text>{this.props.deckTitle}</Text>
-           <Text>{this.props.numCards} cards</Text>
-           <Button
-              title="Submit"
+           <Text>Deck List Item</Text>
+           <Text>Deck num cards</Text>
 
-            >
-           </Button>
         </View>
 
     );
   }
 }
 
-DeckListItem.propTypes = {
-  deckTitle: PropTypes.string.isRequired,
-  numCards: PropTypes.number.isRequired,
-}
+// DeckListItem.propTypes = {
+//   deckTitle: PropTypes.string.isRequired,
+//   numCards: PropTypes.number.isRequired,
+// }
 
 export default DeckListItem

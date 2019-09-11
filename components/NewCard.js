@@ -25,6 +25,11 @@ class NewCard extends Component {
               onPress={() => this.props.navigation.navigate('DeckDetail')}
             >
            </Button>
+           <Button
+              title="Cancel"
+              onPress={() => this.props.navigation.navigate('DeckDetail')}
+            >
+           </Button>           
         </View>
 
     );

@@ -19,7 +19,12 @@ class DeckDetail extends Component {
               title="Quiz Me"
               onPress={() => this.props.navigation.navigate('Quiz')}
             >
-           </Button>                 
+           </Button>
+           <Button
+              title="Delete Deck"
+              onPress={() => this.props.navigation.navigate('AllDecks')}
+            >
+           </Button>
         </View>
 
     );

@@ -19,6 +19,11 @@ class NewDeck extends Component {
               onPress={() => this.props.navigation.navigate('AllDecks')}
             >
            </Button>
+           <Button
+              title="Cancel"
+              onPress={() => this.props.navigation.navigate('AllDecks')}
+            >
+           </Button>
         </View>
 
     );

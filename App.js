@@ -7,6 +7,7 @@ import NewDeck from './components/NewDeck'
 import DeckDetail from './components/DeckDetail'
 import NewCard from './components/NewCard'
 import Quiz from './components/Quiz'
+import DeckListItem from './components/DeckListItem'
 
 class HomeScreen extends React.Component {
   render() {
@@ -16,22 +17,6 @@ class HomeScreen extends React.Component {
         <Button
           title="All Decks"
           onPress={() => this.props.navigation.navigate('AllDecks')}
-        />
-        <Button
-          title="New Deck"
-          onPress={() => this.props.navigation.navigate('NewDeck')}
-        />
-        <Button
-          title="Deck Detail"
-          onPress={() => this.props.navigation.navigate('DeckDetail')}
-        />
-        <Button
-          title="New Card"
-          onPress={() => this.props.navigation.navigate('NewCard')}
-        />
-        <Button
-          title="Quiz"
-          onPress={() => this.props.navigation.navigate('Quiz')}
         />
       </View>
     );
@@ -45,7 +30,8 @@ export const AppNavigator = createStackNavigator(
     NewDeck: NewDeck,
     DeckDetail: DeckDetail,
     NewCard: NewCard,
-    Quiz: Quiz
+    Quiz: Quiz,
+    DeckListItem: DeckListItem
   },
   {
     initialRouteName: 'Home',
