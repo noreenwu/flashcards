@@ -1,37 +1,50 @@
 
 import React, { Component } from 'react'
 import { Text, View, Button } from 'react-native';
+// import { connect } from 'react-redux'
 import DeckListItem from './DeckListItem'
-// import DeckDetail from './DeckDetail'
+
 
 class AllDecks extends Component {
+
+
   render() {
+
+    console.log("AllDecks!")
     return (
-      <View>
-        <Text>All Decks!</Text>
+        <View>
+          <Text>All Decks!</Text>
 
-        <DeckListItem
-                      />
-                      <Button
-                         title="Deck Detail"
-                         onPress={() => this.props.navigation.navigate('DeckDetail')}
-                       >
-                      </Button>
+          <DeckListItem
+                        />
+                        <Button
+                           title="Deck Detail"
+                           onPress={() => this.props.navigation.navigate('DeckDetail')}
+                         >
+                        </Button>
 
-        <DeckListItem
-                      />
+          <DeckListItem
+                        />
 
-        <DeckListItem
-                      />
+          <DeckListItem
+                        />
 
-        <Button
-          title="New Deck"
-          onPress={() => this.props.navigation.navigate('NewDeck')}
-        />
+          <Button
+            title="New Deck"
+            onPress={() => this.props.navigation.navigate('NewDeck')}
+          />
 
-      </View>
+        </View>
+
     );
   }
 }
 
+// function mapStateToProps ({decks}) {
+//   return {
+//     decks
+//   }
+// }
+
 export default AllDecks
+// export default connect(mapStateToProps)(AllDecks)

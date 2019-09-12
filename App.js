@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, View, Text, StyleSheet } from 'react-native';
-import AllDecks from './components/AllDecks'
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import AllDecks from './components/AllDecks'
 import NewDeck from './components/NewDeck'
 import DeckDetail from './components/DeckDetail'
 import NewCard from './components/NewCard'
@@ -10,9 +10,9 @@ import Quiz from './components/Quiz'
 import DeckListItem from './components/DeckListItem'
 
 
-class HomeScreen extends React.Component {
+class App extends React.Component {
   render() {
-
+    console.log("App")
     return (
 
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -30,7 +30,7 @@ class HomeScreen extends React.Component {
 
 export const AppNavigator = createStackNavigator(
   {
-    Home: HomeScreen,
+    Home: App,
     AllDecks: AllDecks,
     NewDeck: NewDeck,
     DeckDetail: DeckDetail,
@@ -44,4 +44,5 @@ export const AppNavigator = createStackNavigator(
 );
 
 
-export default createAppContainer(AppNavigator);
+// export default createAppContainer(AppNavigator);
+export default App
