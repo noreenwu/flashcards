@@ -11,8 +11,6 @@ import DeckDetail from './components/DeckDetail'
 import NewCard from './components/NewCard'
 import Quiz from './components/Quiz'
 import DeckListItem from './components/DeckListItem'
-import TestComponent from './components/TestComponent'
-import Welcomen from './components/Welcomen'
 
 export const AppNavigator = createStackNavigator(
   {
@@ -31,12 +29,12 @@ export const AppNavigator = createStackNavigator(
 let Navigator = createAppContainer(AppNavigator);
 
 class App extends React.Component {
+
   render() {
     console.log("App")
     return (
         <Provider store={createStore(reducer)}>
             <Navigator/>
-            <Welcomen navigate={this.props.navigation.navigate}/>
         </Provider>
     );
   }
