@@ -41,37 +41,27 @@ class AllDecks extends Component {
 
     console.log("AllDecks!")
     const deckNames = Object.keys(this.state.decks)
+    let thisDeck = this.state.decks['React']
     console.log("deckNames is ", deckNames)
     return (
         <View>
           <Text>All Decks!</Text>
           <View>
 
-          { deckNames.map(name =>
-            <Text key={name}>{name}</Text>)}
+          { deckNames.map(name => (
+            <DeckListItem
+                key={name}
+                id={name}
+                name={name}
+                navigate={this.props.navigation.navigate}
+                deck={this.state.decks[`${name}`]}
+            />
+          ))
+          }
+
 
           </View>
 
-
-          <DeckListItem
-              name={'Deck 1'}
-              navigate={this.props.navigation.navigate}
-              decks={this.state.decks}
-                        />
-
-          <DeckListItem
-              name={'Deck 2'}
-              navigate={this.props.navigation.navigate}
-              decks={this.state.decks}
-
-                        />
-
-          <DeckListItem
-              name={'Deck 3'}
-              navigate={this.props.navigation.navigate}
-              decks={this.state.decks}
-
-                        />
 
           <Button
             title="New Deck"

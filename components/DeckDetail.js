@@ -1,14 +1,19 @@
 import React, { Component } from 'react'
 import { Text, View, Button } from 'react-native';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 class DeckDetail extends Component {
 
   render() {
+    const { navigation } = this.props
+    const name = navigation.getParam('name', 'noname')
+    const numCards = navigation.getParam('numCards', 0)
+
+    console.log("Deck Detail name ", this.props.name)
     return (
         <View>
-           <Text>Deck Detail Page: Deck Name</Text>
-           <Text>num cards</Text>
+           <Text>Deck Detail Page: Deck Name: {name}</Text>
+           <Text>num cards: {numCards}</Text>
 
            <Button
               title="Add Card"
@@ -32,7 +37,7 @@ class DeckDetail extends Component {
 }
 
 // DeckDetail.propTypes = {
-//   deckId: PropTypes.number.isRequired,
+//   name: PropTypes.name.isRequired,
 // }
 
 export default DeckDetail
