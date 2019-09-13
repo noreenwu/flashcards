@@ -7,12 +7,16 @@ import { Text, View, Button } from 'react-native';
 class DeckListItem extends Component {
 
   render() {
-
+    console.log("DeckListItem ", this.props.decks)
     return (
         <View>
-           <Text>Deck List Item</Text>
+           <Text>{this.props.name}</Text>
            <Text>Deck num cards</Text>
-
+           <Button
+              title="Deck Detail"
+              onPress={() => this.props.navigate('DeckDetail')}
+            >
+           </Button>
         </View>
 
     );
