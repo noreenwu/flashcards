@@ -71,18 +71,24 @@ export function removeEntry (key) {
 
 
 
+export function getDecks() {
+  console.log("getDecks")
+  return AsyncStorage.getItem(DECKS_STORAGE_KEY)
+    .then(results => JSON.parse(results))
+}
 
 export function getDeck(id) {
-  let ret
-  AsyncStorage.getItem(DECKS_STORAGE_KEY)
+
+  return AsyncStorage.getItem(DECKS_STORAGE_KEY)
     .then((results) => {
       const data = JSON.parse(results)
-      if (data[id]) {
-         ret = data[id]
-         console.log("ret is ", ret)
-       }
+      data[id]
+      // if (data[id]) {
+      //    ret = data[id]
+      //    console.log("ret is ", ret)
+      //  }
     })
-    return ret
+
 }
 
 let decks_delta = {
@@ -111,12 +117,21 @@ export function addCardToDeck(title, card) {
 
 }
 
+// export function initDecks() {
+//   console.log("initDecks")
+//   return new Promise(function(resolve,reject) {
+//     AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks), () => {
+//       AsyncStorage.getItem(DECKS_STORAGE_KEY, (err, result) => {
+//         console.log(result)
+//       });
+//     });
+//   });
+// }
 export function initDecks() {
-  return new Promise(function(resolve,reject) {
-    AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks), () => {
-      AsyncStorage.getItem(DECKS_STORAGE_KEY, (err, result) => {
-        console.log(result)
+    console.log("initDecks")
+    return AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks), () => {
+      AsyncStorage.getItem(DECKS_STORAGE_KEY)
+        .then(results => JSON.stringify(results))
+        .then(results => console.log("results of initDecks", results))
       });
-    });
-  });
 }

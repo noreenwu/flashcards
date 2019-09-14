@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, TextInput, Button, TouchableOpacity } from 'react-native';
-import { submitEntry, removeEntry, saveDeckTitle } from '../utils/api'
+import { submitEntry, removeEntry, saveDeckTitle, getDecks } from '../utils/api'
 
 
 function SubmitBtn ({ onPress }) {
@@ -21,15 +21,19 @@ class NewDeck extends Component {
   }
   submit = () => {
     console.log("New Deck submit")
-    // const key = '123'
-    // const entry = this.state
-    // submitEntry({key, entry})
-    saveDeckTitle('hi')
+
+    // saveDeckTitle('hi')
+
+    getDecks()
+      .then((decks) => {
+        console.log("hi", decks)
+      })
+
   }
 
   remove = () => {
     console.log("New Deck remove")
-    key = '123'
+    key = 'hi'
     removeEntry(key)
   }
 
