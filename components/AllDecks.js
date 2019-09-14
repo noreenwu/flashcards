@@ -7,24 +7,25 @@ import { initDecks, getDeck } from '../utils/api'
 
 class AllDecks extends Component {
 
-  componentDidMount() {
+  async componentDidMount() {
 
     // initDecks().then(function(response) {
     //   console.log("Success", response);
     // }, function(error) {
     //   console.log("error", error);
     // })
-let d;
+
     initDecks().then(function(response) {
       console.log("Success!", response);
       d = getDeck('React')
     }, function(error) {
       console.error("Failed!", error);
     })
-    d = getDeck('React')
-    console.log("component did mount")
+    const response = await getDeck('React')
+    
+
     // let d = retrieveItem('React');
-    console.log("d", d)
+
 
   }
 

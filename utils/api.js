@@ -92,8 +92,14 @@ let decks_delta = {
   }
 }
 
-export function saveDeckTitle(title) {
-
+export function saveDeckTitle(newDeckTitle) {
+  console.log("saveDeckTitle ", newDeckTitle)
+  decks_delta = {
+       [newDeckTitle]: {
+        title: newDeckTitle,
+        questions: []
+      }
+  }
   AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify(decks_delta), () => {
     AsyncStorage.getItem(DECKS_STORAGE_KEY, (err, result) => {
       console.log(result);
