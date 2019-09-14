@@ -22,13 +22,8 @@ class NewDeck extends Component {
   submit = () => {
     console.log("New Deck submit")
 
-    // saveDeckTitle('hi')
-
-    getDecks()
-      .then((decks) => {
-        console.log("hi", decks)
-      })
-
+    saveDeckTitle('hi')
+    // update AllDecks state
   }
 
   remove = () => {
@@ -39,6 +34,8 @@ class NewDeck extends Component {
 
   render() {
     console.log("New Deck")
+    const { params} = this.props.navigation.state;
+    console.log("New Deck:", params)
     return (
         <View>
            <Text>New Deck: What is the name of your new deck?</Text>
@@ -51,6 +48,10 @@ class NewDeck extends Component {
 
 
            <SubmitBtn onPress={this.submit} />
+           <Button title='update'
+                   onPress={() =>{
+                     params.updateDecks('hi')
+            }} />
            <SubmitBtn onPress={this.remove} />
 
            <Button

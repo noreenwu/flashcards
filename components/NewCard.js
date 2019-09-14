@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, TextInput, Button } from 'react-native';
-
+import { getDeck } from '../utils/helpers'
 
 class NewCard extends Component {
 
@@ -29,7 +29,7 @@ class NewCard extends Component {
               title="Cancel"
               onPress={() => this.props.navigation.navigate('DeckDetail')}
             >
-           </Button>           
+           </Button>
         </View>
 
     );
