@@ -12,6 +12,7 @@ import NewCard from './components/NewCard'
 import Quiz from './components/Quiz'
 import DeckListItem from './components/DeckListItem'
 
+
 export const AppNavigator = createStackNavigator(
   {
     AllDecks: AllDecks,
@@ -21,20 +22,19 @@ export const AppNavigator = createStackNavigator(
     Quiz: Quiz,
     DeckListItem: DeckListItem
   },
-  // {
-  //   initialRouteName: 'Home',
-  // }
+
 );
 
-let Navigator = createAppContainer(AppNavigator);
+const Navigator = createAppContainer(AppNavigator);
 
 class App extends React.Component {
 
+
   render() {
-    console.log("App")
     return (
         <Provider store={createStore(reducer)}>
             <Navigator/>
+
         </Provider>
     );
   }

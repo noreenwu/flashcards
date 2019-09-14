@@ -3,46 +3,41 @@ import React, { Component } from 'react'
 import { Text, View, Button, FlatList } from 'react-native';
 import { connect } from 'react-redux'
 import DeckListItem from './DeckListItem'
-
+import { initDecks, getDeck } from '../utils/api'
 
 class AllDecks extends Component {
 
   componentDidMount() {
-    // ultimately, load the data in from AsyncStorage
+
+    // initDecks().then(function(response) {
+    //   console.log("Success", response);
+    // }, function(error) {
+    //   console.log("error", error);
+    // })
+let d;
+    initDecks().then(function(response) {
+      console.log("Success!", response);
+      d = getDeck('React')
+    }, function(error) {
+      console.error("Failed!", error);
+    })
+    d = getDeck('React')
+    console.log("component did mount")
+    // let d = retrieveItem('React');
+    console.log("d", d)
+
   }
 
   state = {
-    decks: {
-      React: {
-        title: 'React',
-        questions: [
-          {
-            question: 'What is React?',
-            answer: 'A library for managing user interfaces'
-          },
-          {
-            question: 'Where do you make Ajax requests in React?',
-            answer: 'The componentDidMount lifecycle event'
-          }
-        ]
-      },
-      JavaScript: {
-        title: 'JavaScript',
-        questions: [
-          {
-            question: 'What is a closure?',
-            answer: 'The combination of a function and the lexical environment within which that function was declared.'
-          }
-        ]
-      }
-    }
+    decks: {}
+
   }
   render() {
 
     console.log("AllDecks!")
     const deckNames = Object.keys(this.state.decks)
     let thisDeck = this.state.decks['React']
-    console.log("deckNames is ", deckNames)
+    console.log("Hello deckNames is ", deckNames)
     return (
         <View>
           <Text>All Decks!</Text>
