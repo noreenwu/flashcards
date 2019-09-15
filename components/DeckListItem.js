@@ -13,7 +13,7 @@ class DeckListItem extends Component {
   render() {
     console.log("DeckListItem ", this.props.deck)
     const { name, deck } = this.props
-
+    console.log("DeckListItem name ", name)
 
     return (
         <View>
@@ -25,7 +25,7 @@ class DeckListItem extends Component {
            <Button
               title="Deck Detail"
               onPress={() => this.props.navigate('DeckDetail',
-                                                  { name: `${name}`,
+                                                  { name: this.props.name,
                                                     numCards: `${deck.questions.length}`}
                                                   )}
             >

@@ -15,9 +15,7 @@ function SubmitBtn ({ onPress }) {
 
 class NewDeck extends Component {
 
-  state = {
-
-  }
+  state = {}
 
   submit(updateFxn, navFxn) {
 
@@ -28,16 +26,9 @@ class NewDeck extends Component {
 
         // navigate back to AllDecks
         navFxn('AllDecks')
-
     }
 
   }
-
-  // remove = () => {
-  //   console.log("New Deck remove")
-  //   key = 'hi'
-  //   removeEntry(key)
-  // }
 
 
   render() {

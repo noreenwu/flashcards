@@ -6,10 +6,14 @@ class DeckDetail extends Component {
 
   render() {
     const { navigation } = this.props
-    const name = navigation.getParam('name', 'noname')
-    const numCards = navigation.getParam('numCards', 0)
+    const { params} = this.props.navigation.state;
 
-    console.log("Deck Detail name ", this.props.name)
+    const name = params.name
+    const numCards = params.numCards
+
+    console.log("Deck Detail name ", name)
+    console.log("Deck Detail numCards ", numCards)
+
     return (
         <View>
            <Text>Deck Detail Page: Deck Name: {name}</Text>
