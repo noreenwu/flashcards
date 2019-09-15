@@ -46,9 +46,7 @@ class AllDecks extends Component {
     }
 
   render() {
-        console.log("AllDecks!")
         const deckNames = Object.keys(this.state.decks)
-        // let thisDeck = this.state.decks['React']
         return (
           <Provider store={createStore(reducer)}>
             <View>

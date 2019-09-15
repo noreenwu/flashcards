@@ -19,17 +19,18 @@ class NewDeck extends Component {
 
   }
 
-  submit(fxn) {
+  submit(updateFxn, navFxn) {
 
-    // console.log("submit has fxn ", fxn)
     console.log("this.state ", this.state)
     if ( Object.keys(this.state).length != 0 ) {
         // use fxn to update AllDecks' state which will also update AsyncStorage
-        fxn(this.state.text)
+        updateFxn(this.state.text)
+
+        // navigate back to AllDecks
+        navFxn('AllDecks')
 
     }
 
-    // clear the field after submitting
   }
 
   // remove = () => {
@@ -56,7 +57,7 @@ class NewDeck extends Component {
 
            <Button title='Create New Deck'
                    onPress={() =>{
-                     this.submit(updateFxn)
+                     this.submit(updateFxn, this.props.navigation.navigate)
             }} />
 
 
