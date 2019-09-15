@@ -16,43 +16,54 @@ function SubmitBtn ({ onPress }) {
 class NewDeck extends Component {
 
   state = {
-    cat: 'blue',
-    dog: 'green'
-  }
-  submit = () => {
-    console.log("New Deck submit")
 
-    saveDeckTitle('hi')
-    // update AllDecks state
   }
 
-  remove = () => {
-    console.log("New Deck remove")
-    key = 'hi'
-    removeEntry(key)
+  submit(fxn) {
+
+    // console.log("submit has fxn ", fxn)
+    console.log("this.state ", this.state)
+    if ( Object.keys(this.state).length != 0 ) {
+        // use fxn to update AllDecks' state which will also update AsyncStorage
+        fxn(this.state.text)
+
+    }
+
+    // clear the field after submitting
   }
+
+  // remove = () => {
+  //   console.log("New Deck remove")
+  //   key = 'hi'
+  //   removeEntry(key)
+  // }
+
 
   render() {
-    console.log("New Deck")
+
     const { params} = this.props.navigation.state;
-    console.log("New Deck:", params)
+    let updateFxn = params.updateDecks
+
     return (
         <View>
            <Text>New Deck: What is the name of your new deck?</Text>
            <TextInput
              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
              placeholder="Name of your new deck here!"
-             // onChangeText={(text) => this.setState({text})}
-             // value={this.state.text}
+             onChangeText={(text) => this.setState({text})}
+             value={this.state.text}
            />
 
-
-           <SubmitBtn onPress={this.submit} />
-           <Button title='update'
+           <Button title='Create New Deck'
                    onPress={() =>{
-                     params.updateDecks('hi')
+                     this.submit(updateFxn)
             }} />
-           <SubmitBtn onPress={this.remove} />
+
+
+           <Button title='Create (Parent)'
+                   onPress={() =>{
+                     params.updateDecks(this.state.text)
+            }} />
 
            <Button
               title="Cancel"

@@ -7,7 +7,7 @@ import { initDecks, getDecks } from '../utils/api'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from '../reducers/dummyReducer'
-
+import { saveDeckTitle } from '../utils/api'
 
 class AllDecks extends Component {
 
@@ -29,10 +29,11 @@ class AllDecks extends Component {
   }
 
   updateDecks(data){
-        // this.setState({
-        //     showModal:true
-        // });
-        console.log("updateDecks", data)
+        if (data) {
+          saveDeckTitle(data)        // update AsyncStorage
+          console.log("updateDecks", data)
+          // update this component's state
+         }
     }
 
   render() {
