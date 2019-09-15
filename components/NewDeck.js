@@ -60,11 +60,6 @@ class NewDeck extends Component {
             }} />
 
 
-           <Button title='Create (Parent)'
-                   onPress={() =>{
-                     params.updateDecks(this.state.text)
-            }} />
-
            <Button
               title="Cancel"
               onPress={() => this.props.navigation.navigate('AllDecks')}

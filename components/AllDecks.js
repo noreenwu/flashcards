@@ -33,13 +33,22 @@ class AllDecks extends Component {
           saveDeckTitle(data)        // update AsyncStorage
           console.log("updateDecks", data)
           // update this component's state
+          let newDeck = { [data]: {title: data,
+                                   questions: [] }}
+          let origDecks = this.state.decks
+
+          let mergedDecks = Object.assign(origDecks, newDeck)
+
+          console.log("mergedDecks: ", mergedDecks)
+
+          this.setState({ decks: mergedDecks })
          }
     }
 
   render() {
         console.log("AllDecks!")
         const deckNames = Object.keys(this.state.decks)
-        let thisDeck = this.state.decks['React']
+        // let thisDeck = this.state.decks['React']
         return (
           <Provider store={createStore(reducer)}>
             <View>
