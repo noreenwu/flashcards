@@ -26,9 +26,14 @@ class NewDeck extends Component {
 
         // navigate back to AllDecks
         // navFxn('AllDecks')
+        const newTitle = this.state.text
+        const newDeck = { title: newTitle,
+                          questions:[] }
+
         navFxn('DeckDetail', { deleteDeck: deleteDeck,
                                name: this.state.text,   // you must receive deleteDeck and pass it on to DeckDetail
-                               numCards: 0 } )
+                               numCards: 0,
+                               deck: newDeck } )
 
     }
 

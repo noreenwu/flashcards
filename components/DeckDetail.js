@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 class DeckDetail extends Component {
 
+
   deleteDeck() {
     // call AllDecks' deleteDeck (save state and Storage)
 
@@ -22,6 +23,7 @@ class DeckDetail extends Component {
     const { navigation } = this.props
     const { params} = this.props.navigation.state;
 
+    const deck = params.deck
     const name = params.name
     const numCards = params.numCards
     let deleteDeck = params.deleteDeck
@@ -29,7 +31,7 @@ class DeckDetail extends Component {
     console.log("Deck Detail name ", name)
     console.log("Deck Detail numCards ", numCards)
     console.log("Deck Detail delete func", params.deleteDeck)
-
+    console.log("Deck Detail deck ", deck)
     return (
         <View>
            <Text>Deck Detail Page: Deck Name: {name}</Text>
@@ -40,18 +42,16 @@ class DeckDetail extends Component {
               onPress={() => this.props.navigation.navigate('NewCard')}
             >
            </Button>
+
            <Button
-              title="Quiz Me"
-              onPress={() => this.props.navigation.navigate('Quiz')}
-            >
-           </Button>
+             title="New Quiz Me"
+             onPress={() => this.props.navigation.navigate('Quiz',
+                                                          { deck: deck })}
+
+           />
+
            <Button
               title="Delete Deck"
-              onPress={() => this.props.navigation.navigate('AllDecks')}
-            >
-           </Button>
-           <Button
-              title="N Delete Deck"
               onPress={() => { this.deleteThisDeck(params.deleteDeck, name, navigation.navigate)
               }}/>
 

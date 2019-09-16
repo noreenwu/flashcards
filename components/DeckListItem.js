@@ -7,6 +7,9 @@ import PropTypes from 'prop-types'
 
 class DeckListItem extends Component {
 
+  handleDeleteDeck() {
+
+  }
 
   render() {
     console.log("DeckListItem ", this.props.deck)
@@ -18,17 +21,15 @@ class DeckListItem extends Component {
             <ListItem
                key={this.props.name}
                title={this.props.name}
+               onPress={() => this.props.navigate('DeckDetail',
+                                                   { deleteDeck: this.handleDeleteDeck,
+                                                     name: this.props.name,
+                                                     numCards: `${deck.questions.length}`,
+                                                     deck: this.props.deck }
+                                                   )}
             />
-           <Text>Deck num cards: {this.props.deck.questions.length}</Text>
-           <Button
-              title="Deck Detail"
-              onPress={() => this.props.navigate('DeckDetail',
-                                                  { deleteDeck: this.props.deleteDeck,
-                                                    name: this.props.name,
-                                                    numCards: `${deck.questions.length}`}
-                                                  )}
-            >
-            </Button>
+           <Text>{this.props.deck.questions.length} { this.props.deck.questions.length === 1? 'card' : 'cards'} </Text>
+
         </View>
 
     );

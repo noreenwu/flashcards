@@ -4,10 +4,24 @@ import { Text, View, Button } from 'react-native';
 class Quiz extends Component {
 
   render() {
+
+    console.log("Quiz Me")
+    const { params} = this.props.navigation.state;
+    const deck = params.deck
+    console.log("Quiz Me deck: ", deck)
+    if (deck.questions.length === 0) {
+        return (
+           <View>
+              <Text>Sorry, there aren't any cards in this deck. Create some cards first!</Text>
+           </View>
+        )
+    }
+
     return (
         <View>
            <Text>Quiz: Deck Name</Text>
            <Text>num cards</Text>
+
 
            <Text>Question (click for Answer)</Text>
            <Button
