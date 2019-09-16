@@ -90,12 +90,18 @@ export function getDeck(id) {
     })
 
 }
-
-let decks_delta = {
-  Spanish: {
-    title: 'Spanish',
-    questions: []
-  }
+export function deleteDeck(deckTitle) {
+  return AsyncStorage.getItem(DECKS_STORAGE_KEY)
+    .then((results) => {
+      const data = JSON.parse(results)
+      data[deckTitle] = undefined
+      delete data[key]
+      AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(data), () => {
+        AsyncStorage.getItem(DECKS_STORAGE_KEY, (err, result) => {
+          console.log(result)
+        })
+      })
+  })
 }
 
 export function saveDeckTitle(newDeckTitle) {

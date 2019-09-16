@@ -1,8 +1,9 @@
 
 import React, { Component } from 'react'
-import { Text, View, Button, FlatList } from 'react-native';
+import { Text, View, Button, FlatList, Fragment } from 'react-native';
 import { connect } from 'react-redux'
 import DeckListItem from './DeckListItem'
+// import { ListItem } from 'react-native-elements'
 import { initDecks, getDecks } from '../utils/api'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -28,7 +29,26 @@ class AllDecks extends Component {
 
   }
 
+  deleteDeck(title) {
+     console.log("AllDecks: deleteDeck")
+     if (title) {
+        // delete deck from this component's state
+
+        // delete deck from AsyncStorage
+
+        console.log("AllDecks: deleteDeck state ", this.state)
+        // let decksCopy = Object.assign(this.state.decks, {})
+        //
+        // decksCopy[title] = undefined
+        // delete decksCopy[title]
+        //
+        // this.setState({ decks: decksCopy })
+     }
+  }
+
   updateDecks(data){
+    // being used to add a new deck. may be modified to take more general updates
+
         if (data) {
           saveDeckTitle(data)        // update AsyncStorage
           console.log("updateDecks", data)
@@ -47,35 +67,35 @@ class AllDecks extends Component {
 
   render() {
         const deckNames = Object.keys(this.state.decks)
+        const deckValues = Object.values(this.state.decks)
+        console.log("deckValues", deckValues)
+        console.log("deckNames", deckNames)
         return (
-          <Provider store={createStore(reducer)}>
             <View>
-              <Text>All Decks!</Text>
-              <View>
 
-              { deckNames.map(name => (
-                <DeckListItem
-                    key={name}
-                    id={name}
-                    name={name}
-                    navigate={this.props.navigation.navigate}
-                    deck={this.state.decks[`${name}`]}
-                />
-              ))
-              }
+                  <Text>All Decks!</Text>
+                      <View>
+                      { deckValues.map(val => (
 
+                        <DeckListItem
+                            key={val.title}
+                            deleteDeck={this.deleteDeck.bind(this)}
+                            name={val.title}
+                            navigate={this.props.navigation.navigate}
+                            deck={this.state.decks[`${val.title}`]}
+                        />
 
-              </View>
-
-
-              <Button
-                title="New Deck"
-                onPress={() => this.props.navigation.navigate('NewDeck',
-                                                             { updateDecks: this.updateDecks.bind(this) } )}
-              />
+                      ))
+                      }
+                  </View>
+                  <Button
+                    title="New Deck"
+                    onPress={() => this.props.navigation.navigate('NewDeck',
+                                                                 { deleteDeck: this.deleteDeck.bind(this),
+                                                                   updateDecks: this.updateDecks.bind(this) })}
+                  />
 
             </View>
-      </Provider>
     )
   }
 }
