@@ -11,6 +11,7 @@ class QuizCard extends Component {
      idx: 0,
      mode: QUESTION
   }
+
   showAnswer(numQuestions) {
     let newIndex = this.state.idx
     let newMode = this.state.mode
@@ -30,17 +31,19 @@ class QuizCard extends Component {
         }
     }
 
-    this.setState( {
-  		 idx : newIndex,
-       mode: newMode
+    this.setState({
+      idx: newIndex,
+      mode: newMode
     })
+    console.log("state should be updated with ", newIndex, newMode)
   }
 
   render() {
 
     const { deck } = this.props
     const question = deck.questions[this.state.idx].question
-
+    const answer = deck.questions[this.state.idx].answer
+    console.log("state of QuizCard ", this.state)
 
     console.log("the first question: ", question)
     return(
@@ -56,7 +59,18 @@ class QuizCard extends Component {
                       >(click for Answer)</Text>
                     </Text>
                   </View>
-                : <View><Text>Answer</Text>
+                : <View><Text>Answer {answer}</Text>
+
+                    <Button
+                       title="Correct"
+                         // navigates to next question or Quiz summary
+                     >
+                    </Button>
+                    <Button
+                       title="Incorrect"
+                       // navigates to next question or Quiz summary
+                     >
+                    </Button>
 
                   <QuizResults mode={this.state.mode}/>
                   </View>

@@ -9,9 +9,14 @@ class QuizResults extends Component {
   render() {
     const { mode } = this.props
 
+    if ( mode === RESULTS ) {
+      return (
+        <Text>Quiz Results!</Text>
+      )
+    }
     return(
+      <Text>nothing yet</Text>
 
-      <Text>QuizResults</Text>
     )
   }
 }
