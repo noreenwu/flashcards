@@ -83,6 +83,7 @@ export function getDeck(id) {
     .then((results) => {
       const data = JSON.parse(results)
       data[id]
+      console.log("AsyncStorage.getItem", data[id])
       // if (data[id]) {
       //    ret = data[id]
       //    console.log("ret is ", ret)

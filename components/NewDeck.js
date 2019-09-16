@@ -24,12 +24,12 @@ class NewDeck extends Component {
         // use fxn to update AllDecks' state which will also update AsyncStorage
         updateFxn(this.state.text)
 
-        // navigate back to AllDecks
-        // navFxn('AllDecks')
+
         const newTitle = this.state.text
         const newDeck = { title: newTitle,
                           questions:[] }
 
+        this.setState( { text: '' })    // this clears the state and field on the screen for Create New Deck
         navFxn('DeckDetail', { deleteDeck: deleteDeck,
                                name: this.state.text,   // you must receive deleteDeck and pass it on to DeckDetail
                                numCards: 0,
