@@ -113,7 +113,7 @@ class QuizCard extends Component {
                      >
                     </Button>
 
-                  <QuizResults mode={this.state.mode}/>
+                  <QuizResults mode={this.state.mode} numQuestions={deck.questions.length} numCorrect={this.state.numCorrect}/>
                   </View>
 
              }
