@@ -19,8 +19,6 @@ class DeckListItem extends Component {
                title={this.props.name}
                onPress={() => this.props.navigate('DeckDetail',
                                                    { deleteDeck: this.props.deleteDeck,
-                                                     name: this.props.name,
-                                                     numCards: `${deck.questions.length}`,
                                                      deck: this.props.deck }
                                                    )}
             />

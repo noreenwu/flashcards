@@ -80,7 +80,6 @@ class QuizCard extends Component {
   }
 
   reset() {
-     console.log("the quiz would be reset")
      const newIndex = 0
      const newMode = QUESTION
      const numCorrect= 0
@@ -140,6 +139,8 @@ class QuizCard extends Component {
                title="Start Quiz Over"
                onPress={() => { this.reset() }}
              />
+
+
 
       </View>
 

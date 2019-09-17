@@ -13,18 +13,19 @@ class DeckDetail extends Component {
   }
 
   render() {
-    const { navigation } = this.props
-    const { params} = this.props.navigation.state;
+    const { navigation } = this.props   // used for Delete Deck
+    const { params } = this.props.navigation.state;
 
-    const deck = params.deck
-    const name = params.name
-    const numCards = params.numCards
-    let deleteDeck = params.deleteDeck
+    const { deck, deleteDeck } = params
+    const numCards = deck.questions.length
+    // const name = params.name
+    // const numCards = params.numCards
+    // let deleteDeck = params.deleteDeck
 
     return (
         <View>
-           <Text>Deck Detail Page: Deck Name: {name}</Text>
-           <Text>num cards: {numCards}</Text>
+           <Text>Deck Detail Page: Deck Name: {deck.title}</Text>
+           <Text>{numCards} cards</Text>
 
            <Button
               title="Add Card"
@@ -33,16 +34,16 @@ class DeckDetail extends Component {
            </Button>
 
            <Button
-             title="New Quiz Me"
+             title="Quiz Me"
              onPress={() => this.props.navigation.navigate('Quiz',
-                                                          { name: name,
-                                                            deck: deck })}
+                                                          { deck: deck,
+                                                            deleteDeck: params.deleteDeck })}
 
            />
 
            <Button
               title="Delete Deck"
-              onPress={() => { this.deleteThisDeck(params.deleteDeck, name, navigation.navigate)
+              onPress={() => { this.deleteThisDeck(params.deleteDeck, deck.title, navigation.navigate)
               }}/>
 
         </View>

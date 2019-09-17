@@ -5,19 +5,16 @@ import QuizCard from './QuizCard'
 class Quiz extends Component {
 
   render() {
-    console.log("Quiz Me")
-    const { deck, name } = this.props.navigation.state.params;
-    // const deck = params.deck
+    const { params } = this.props.navigation.state;
+    console.log("Quiz Me: the delete funcion pass in is ", params.deleteDeck)
+    const { deck } = this.props.navigation.state.params;
 
-    // const { navigation } = this.props.state.params.navigate;
-
-    console.log("Quiz Me deck: navigate function ", this.props.navigation.navigate)
     const numQuestions = deck.questions.length
 
     if (deck.questions.length === 0) {
         return (
            <View>
-              <Text>Sorry, there aren't any cards in the {name} deck. Create some cards first!</Text>
+              <Text>Sorry, there aren't any cards in the {deck.title} deck. Create some cards first!</Text>
            </View>
         )
     }
@@ -29,7 +26,13 @@ class Quiz extends Component {
 
            <QuizCard deck={deck} navFxn={this.props.navigation.navigate} />
 
+           <Button
+             title="Deck Options"
+             onPress={() => this.props.navigation.navigate('DeckDetail',
+                                                          { deleteDeck: params.deleteDeck,
+                                                            deck: deck })}
 
+           />
         </View>
 
     );
