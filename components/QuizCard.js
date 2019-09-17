@@ -4,9 +4,9 @@ export const QUESTION = 'question'
 export const ANSWER = 'answer'
 export const RESULTS = 'results'
 import QuizResults from './QuizResults'
+import PropTypes from 'prop-types'
+
 class QuizCard extends Component {
-
-
   state = {
      idx: 0,
      mode: QUESTION,
@@ -79,18 +79,34 @@ class QuizCard extends Component {
     })
   }
 
+  reset() {
+     console.log("the quiz would be reset")
+     const newIndex = 0
+     const newMode = QUESTION
+     const numCorrect= 0
+     const numIncorrect = 0
+
+     this.setState({
+        idx: newIndex,
+        mode: newMode,
+        numCorrect: numCorrect,
+        numIncorrect: numIncorrect
+     })
+
+  }
   render() {
 
     const { deck } = this.props
     const question = deck.questions[this.state.idx].question
     const answer = deck.questions[this.state.idx].answer
-    console.log("state of QuizCard ", this.state)
+    const totQuestions = deck.questions.length
+    const numQuestionsLeft = totQuestions - this.state.idx - 1
 
-    console.log("the first question: ", question)
+
     return(
       <View>
 
-
+            <Text>Question {this.state.idx + 1} of {totQuestions} ({numQuestionsLeft} more after this)</Text>
             { ( this.state.mode === QUESTION  )
                ?  <View>
                     <Text>Question
@@ -104,25 +120,36 @@ class QuizCard extends Component {
 
                     <Button
                        title="Correct"
-                       onPress={() => this.tallyCorrect(deck.questions.length)}
+                       onPress={() => this.tallyCorrect(totQuestions)}
                      >
                     </Button>
                     <Button
                        title="Incorrect"
-                       onPress={() => this.tallyIncorrect(deck.questions.length)}
+                       onPress={() => this.tallyIncorrect(totQuestions)}
                      >
                     </Button>
 
                   <QuizResults mode={this.state.mode} numQuestions={deck.questions.length} numCorrect={this.state.numCorrect}/>
+
                   </View>
 
+
              }
+
+             <Button
+               title="Start Quiz Over"
+               onPress={() => { this.reset() }}
+             />
 
       </View>
 
     )
   }
 
+}
+
+QuizCard.propTypes = {
+  deck: PropTypes.object.isRequired,
 }
 
 export default QuizCard

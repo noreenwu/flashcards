@@ -8,9 +8,11 @@ class Quiz extends Component {
     console.log("Quiz Me")
     const { deck, name } = this.props.navigation.state.params;
     // const deck = params.deck
-    // const { navigation } = this.props.navigation.state.params;
 
-    console.log("Quiz Me deck: ", deck)
+    // const { navigation } = this.props.state.params.navigate;
+
+    console.log("Quiz Me deck: navigate function ", this.props.navigation.navigate)
+    const numQuestions = deck.questions.length
 
     if (deck.questions.length === 0) {
         return (
@@ -23,9 +25,10 @@ class Quiz extends Component {
     return (
         <View>
            <Text>{deck.title}</Text>
-           <Text>{deck.questions.length} cards</Text>
+           <Text>{numQuestions} cards</Text>
 
-           <QuizCard deck={deck} />
+           <QuizCard deck={deck} navFxn={this.props.navigation.navigate} />
+
 
         </View>
 
