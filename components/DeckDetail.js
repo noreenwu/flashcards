@@ -4,19 +4,12 @@ import PropTypes from 'prop-types'
 
 class DeckDetail extends Component {
 
-
-  deleteDeck() {
-    // call AllDecks' deleteDeck (save state and Storage)
-
-    // go back to AllDecks page
-  }
-
   deleteThisDeck(deleteFxn, deckName, navFxn) {
-    console.log("DeckDetail: deleteThisDeck", deleteFxn)
-    console.log("DeckDetail: deckName", deckName)
 
     deleteFxn(deckName)
-     //navFxn('AllDecks')
+
+    navFxn('AllDecks')    // navigate back to main screen
+
   }
 
   render() {
@@ -28,10 +21,6 @@ class DeckDetail extends Component {
     const numCards = params.numCards
     let deleteDeck = params.deleteDeck
 
-    console.log("Deck Detail name ", name)
-    console.log("Deck Detail numCards ", numCards)
-    console.log("Deck Detail delete func", params.deleteDeck)
-    console.log("Deck Detail deck ", deck)
     return (
         <View>
            <Text>Deck Detail Page: Deck Name: {name}</Text>

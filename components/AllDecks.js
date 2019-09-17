@@ -8,12 +8,11 @@ import { initDecks, getDecks } from '../utils/api'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from '../reducers/dummyReducer'
-import { saveDeckTitle } from '../utils/api'
+import { saveDeckTitle, deleteDeck } from '../utils/api'
 
 class AllDecks extends Component {
 
    componentDidMount() {
-    console.log("AllDecks: ComponentDidMount")
 
     initDecks()
       .then(getDecks()
@@ -30,19 +29,38 @@ class AllDecks extends Component {
   }
 
   deleteDeck(title) {
-     console.log("AllDecks: deleteDeck")
+     console.log("AllDecks: deleteDeck", title )
      if (title) {
         // delete deck from this component's state
 
         // delete deck from AsyncStorage
+        deleteDeck(title)
+          .then((res) => {
+              console.log("deleted the deck from Storage")
+          })
 
-        console.log("AllDecks: deleteDeck state ", this.state)
-        // let decksCopy = Object.assign(this.state.decks, {})
-        //
-        // decksCopy[title] = undefined
-        // delete decksCopy[title]
-        //
-        // this.setState({ decks: decksCopy })
+          // .then(getDecks()
+          //     .then((newDecks) => {
+          //       this.setState(() => ({
+          //          decks: newDecks
+          //       }))
+          //     }))
+          // .then(getDecks()
+          //   .then((decks) => {
+          //     this.setState(() => ({
+          //       decks
+          //     }))
+          // }))
+
+        let decksCopy = Object.assign(this.state.decks, {})
+
+
+        console.log("editing the state manually: ", decksCopy)
+        delete decksCopy[title]
+        console.log("after the delete: ", decksCopy)
+
+        this.setState({ decks: decksCopy })
+
      }
   }
 
@@ -68,8 +86,21 @@ class AllDecks extends Component {
   render() {
         const deckNames = Object.keys(this.state.decks)
         const deckValues = Object.values(this.state.decks)
-        console.log("deckValues", deckValues)
-        console.log("deckNames", deckNames)
+
+        console.log("AllDecks state ", this.state)
+        if (deckValues.length === 0) {
+          return (
+            <View>
+               <Text>No Decks! Create one!</Text>
+               <Button
+                 title="New Deck"
+                 onPress={() => this.props.navigation.navigate('NewDeck',
+                                                              { deleteDeck: this.deleteDeck.bind(this),
+                                                                updateDecks: this.updateDecks.bind(this) })}
+               />
+            </View>
+          )
+        }
         return (
             <View>
 
@@ -100,11 +131,7 @@ class AllDecks extends Component {
   }
 }
 
-function mapStateToProps ({decks}) {
-  return {
-    hello: 1
-  }
-}
+
 
 
 export default AllDecks
