@@ -9,33 +9,74 @@ class QuizCard extends Component {
 
   state = {
      idx: 0,
-     mode: QUESTION
+     mode: QUESTION,
+     numCorrect: 0,
+     numIncorrect: 0
   }
 
-  showAnswer(numQuestions) {
-    let newIndex = this.state.idx
+  showAnswer() {
+    // let newIndex = this.state.idx
     let newMode = this.state.mode
 
     if (this.state.mode === QUESTION) {
-        newIndex = this.state.idx
+        // newIndex = this.state.idx
         newMode = ANSWER
     }
-    else { // ANSWER mode
-        if ( this.state.idx < numQuestions - 1) {
-          newIndex = this.state.idx + 1
-          newMode = QUESTION
-        }
-        else { // no more questions
-          newMode = RESULTS
-          newIndex = this.state.idx
-        }
+    // else { // ANSWER mode
+    //     if ( this.state.idx < numQuestions - 1) {
+    //       newIndex = this.state.idx + 1
+    //       newMode = QUESTION
+    //     }
+    //     else { // no more questions
+    //       newMode = RESULTS
+    //       newIndex = this.state.idx
+    //     }
+    //}
+
+    this.setState({
+      mode: newMode
+    })
+    console.log("state should be updated with ",  newMode)
+  }
+
+
+  tallyCorrect(totQuestions) {
+    let correctCount = this.state.numCorrect + 1
+
+    this.setState({
+      numCorrect: correctCount
+    })
+
+    this.showResults(totQuestions)
+
+  }
+
+  tallyIncorrect(totQuestions) {
+    let incorrectCount = this.state.numIncorrect + 1
+
+    this.setState({
+      numIncorrect: incorrectCount
+    })
+
+    this.showResults(totQuestions)
+  }
+
+  showResults(totQuestions) {
+    let newIndex = this.state.idx
+    let newMode = this.state.mode
+
+    if (this.state.idx < totQuestions - 1) {
+      newIndex = this.state.idx + 1
+      newMode = QUESTION
+    }
+    else {
+      newMode = RESULTS
     }
 
     this.setState({
-      idx: newIndex,
-      mode: newMode
+       idx: newIndex,
+       mode: newMode
     })
-    console.log("state should be updated with ", newIndex, newMode)
   }
 
   render() {
@@ -55,7 +96,7 @@ class QuizCard extends Component {
                     <Text>Question
                     { question }
                       <Text
-                        onPress={() => this.showAnswer(deck.questions.length)}
+                        onPress={() => this.showAnswer()}
                       >(click for Answer)</Text>
                     </Text>
                   </View>
@@ -63,12 +104,12 @@ class QuizCard extends Component {
 
                     <Button
                        title="Correct"
-                         // navigates to next question or Quiz summary
+                       onPress={() => this.tallyCorrect(deck.questions.length)}
                      >
                     </Button>
                     <Button
                        title="Incorrect"
-                       // navigates to next question or Quiz summary
+                       onPress={() => this.tallyIncorrect(deck.questions.length)}
                      >
                     </Button>
 
