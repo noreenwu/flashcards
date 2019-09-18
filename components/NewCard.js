@@ -5,7 +5,7 @@ import { getDeck } from '../utils/helpers'
 class NewCard extends Component {
 
   submit(updateFxn, deleteFxn, deck, navFxn, navigateAway=true) {
-    console.log("NewCard: submit deleteFxn ", deleteFxn)
+    console.log("NewCard: submit updateFxn ", updateFxn)
     // add card to deck
     if (( this.state.question) && (this.state.answer) ) {
        console.log("fields are filled:" , deck.questions)
@@ -13,8 +13,8 @@ class NewCard extends Component {
        deck.questions.push({ question: this.state.question, answer: this.state.answer })
        console.log("fields are filled and deck appended:" , deck.questions)
 
-      let formattedDeck = { [deck.title] : deck }
-       updateFxn(formattedDeck)
+      // let formattedDeck = { [deck.title] : deck }
+       updateFxn(deck)
     }
 
     // clear the state

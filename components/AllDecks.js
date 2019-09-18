@@ -9,7 +9,7 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from '../reducers/dummyReducer'
 import { deleteDeck } from '../utils/api'
-import { saveDeckTitle } from '../utils/helpers'
+import { saveDeckTitle, saveDeck } from '../utils/helpers'
 
 class AllDecks extends Component {
 
@@ -89,10 +89,11 @@ class AllDecks extends Component {
       if (deck) {
         console.log("AllDecks: updateDeck ", deck)
         let origDecks = this.state.decks
-        // let formattedDeck = { [deck.title] : deck }
+        let formattedDeck = saveDeck(deck)     // calls fxn in helpers
+
         console.log("updateDeck origDecks", origDecks)
-        console.log("incoming deck", deck)
-        let mergedDecks = Object.assign(origDecks, deck)
+        console.log("incoming deck", formattedDeck)
+        let mergedDecks = Object.assign(origDecks, formattedDeck)
         this.setState({ decks: mergedDecks })
       }
   }
