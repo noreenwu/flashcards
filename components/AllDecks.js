@@ -63,33 +63,13 @@ class AllDecks extends Component {
      }
   }
 
-  updateDecksOrig(data){
-    // being used to add a new deck. may be modified to take more general updates
 
-        if (data) {
-          saveDeckTitle(data)        // update AsyncStorage
-          console.log("updateDecks", data)
-          // update this component's state
-          let newDeck = { [data]: {title: data,
-                                   questions: [] }}
-          console.log("newDeck ", newDeck)
-          let origDecks = this.state.decks
-
-          let mergedDecks = Object.assign(origDecks, newDeck)
-
-          console.log("mergedDecks: ", mergedDecks)
-
-          this.setState({ decks: mergedDecks })
-         }
-    }
-
-
-  updateDecks(title){
+  createNewDeck(title){
     // being used to add a new deck. may be modified to take more general updates
 
         if (title) {
           let newDeck = saveDeckTitle(title)        // helper function
-          console.log("updateDecks", title)
+          console.log("createNewDeck", title)
 
           // update this component's state
           console.log("newDeck ", newDeck)
@@ -130,7 +110,7 @@ class AllDecks extends Component {
                  title="New Deck"
                  onPress={() => this.props.navigation.navigate('NewDeck',
                                                               { deleteDeck: this.deleteDeck.bind(this),
-                                                                updateDecks: this.updateDecks.bind(this) })}
+                                                                createNewDeck: this.createNewDeck.bind(this) })}
                />
             </View>
           )
@@ -158,7 +138,7 @@ class AllDecks extends Component {
                     title="New Deck"
                     onPress={() => this.props.navigation.navigate('NewDeck',
                                                                  { deleteDeck: this.deleteDeck.bind(this),
-                                                                   updateDecks: this.updateDecks.bind(this) })}
+                                                                   createNewDeck: this.createNewDeck.bind(this) })}
                   />
 
             </View>

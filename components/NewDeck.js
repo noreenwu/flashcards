@@ -17,12 +17,12 @@ class NewDeck extends Component {
 
   state = {}
 
-  submit(updateFxn, navFxn, deleteDeck) {
+  submit(createDeckFxn, navFxn, deleteDeck) {
 
     console.log("this.state ", this.state)
     if ( Object.keys(this.state).length != 0 ) {
         // use fxn to update AllDecks' state which will also update AsyncStorage
-        updateFxn(this.state.text)
+        createDeckFxn(this.state.text)
 
 
         const newTitle = this.state.text
@@ -43,7 +43,7 @@ class NewDeck extends Component {
   render() {
 
     const { params} = this.props.navigation.state;
-    let updateFxn = params.updateDecks
+    let createDeckFxn = params.createNewDeck
     let deleteDeck = params.deleteDeck
 
     return (
@@ -58,7 +58,7 @@ class NewDeck extends Component {
 
            <Button title='Create New Deck'
                    onPress={() =>{
-                     this.submit(updateFxn, this.props.navigation.navigate, deleteDeck)
+                     this.submit(createDeckFxn, this.props.navigation.navigate, deleteDeck)
             }} />
 
 
