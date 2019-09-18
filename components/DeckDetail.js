@@ -16,7 +16,7 @@ class DeckDetail extends Component {
     const { navigation } = this.props   // used for Delete Deck
     const { params } = this.props.navigation.state;
 
-    const { deck, deleteDeck } = params
+    const { deck, deleteDeck, updateDeck } = params
     const numCards = deck.questions.length
     // const name = params.name
     // const numCards = params.numCards
@@ -29,7 +29,10 @@ class DeckDetail extends Component {
 
            <Button
               title="Add Card"
-              onPress={() => this.props.navigation.navigate('NewCard')}
+              onPress={() => this.props.navigation.navigate('NewCard',
+                                                              { deck: deck,
+                                                               updateDeck: updateDeck,
+                                                               deleteDeck: params.deleteDeck })}
             >
            </Button>
 

@@ -15,10 +15,11 @@ class DeckListItem extends Component {
     return (
         <View>
             <ListItem
-               key={this.props.name}
-               title={this.props.name}
+               key={name}
+               title={name}
                onPress={() => this.props.navigate('DeckDetail',
                                                    { deleteDeck: this.props.deleteDeck,
+                                                     updateDeck: this.props.updateDeck,
                                                      deck: this.props.deck }
                                                    )}
             />
@@ -33,7 +34,8 @@ class DeckListItem extends Component {
 DeckListItem.propTypes = {
   deck: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
-  deleteDeck: PropTypes.func.isRequired
+  deleteDeck: PropTypes.func.isRequired,
+  updateDeck: PropTypes.func.isRequired
 }
 
 export default DeckListItem

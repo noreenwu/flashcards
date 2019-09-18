@@ -31,8 +31,6 @@ class AllDecks extends Component {
   deleteDeck(title) {
      console.log("AllDecks: deleteDeck", title )
      if (title) {
-        // delete deck from this component's state
-
         // delete deck from AsyncStorage
         deleteDeck(title)
           .then((res) => {
@@ -52,8 +50,8 @@ class AllDecks extends Component {
           //     }))
           // }))
 
+        // delete deck from this component's state
         let decksCopy = Object.assign(this.state.decks, {})
-
 
         console.log("editing the state manually: ", decksCopy)
         delete decksCopy[title]
@@ -73,6 +71,7 @@ class AllDecks extends Component {
           // update this component's state
           let newDeck = { [data]: {title: data,
                                    questions: [] }}
+          console.log("newDeck ", newDeck)
           let origDecks = this.state.decks
 
           let mergedDecks = Object.assign(origDecks, newDeck)
@@ -82,6 +81,20 @@ class AllDecks extends Component {
           this.setState({ decks: mergedDecks })
          }
     }
+
+
+  updateDeck(deck) {
+      // being used to add new card to a deck
+      if (deck) {
+        console.log("AllDecks: updateDeck ", deck)
+        let origDecks = this.state.decks
+        let formattedDeck = { [deck.title] : deck }
+        console.log("updateDeck origDecks", origDecks)
+        console.log("incoming deck", formattedDeck)
+        let mergedDecks = Object.assign(origDecks, formattedDeck)
+        this.setState({ decks: mergedDecks })
+      }
+  }
 
   render() {
         const deckNames = Object.keys(this.state.decks)
@@ -110,10 +123,11 @@ class AllDecks extends Component {
 
                         <DeckListItem
                             key={val.title}
-                            deleteDeck={this.deleteDeck.bind(this)}
                             name={val.title}
-                            navigate={this.props.navigation.navigate}
                             deck={this.state.decks[`${val.title}`]}
+                            deleteDeck={this.deleteDeck.bind(this)}
+                            updateDeck={this.updateDeck.bind(this)}
+                            navigate={this.props.navigation.navigate}
                         />
 
                       ))
