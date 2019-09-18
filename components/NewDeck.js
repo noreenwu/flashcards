@@ -17,7 +17,7 @@ class NewDeck extends Component {
 
   state = {}
 
-  submit(createDeckFxn, navFxn, deleteDeck) {
+  submit(createDeckFxn, navFxn, deleteDeck, updateDeck) {
 
     console.log("this.state ", this.state)
     if ( Object.keys(this.state).length != 0 ) {
@@ -31,9 +31,14 @@ class NewDeck extends Component {
 
         this.setState( { text: '' })    // this clears the state and field on the screen for Create New Deck
         navFxn('DeckDetail', { deleteDeck: deleteDeck,
-                               name: this.state.text,   // you must receive deleteDeck and pass it on to DeckDetail
-                               numCards: 0,
+                               updateDeck: updateDeck,
                                deck: newDeck } )
+                               // navFxn('DeckDetail', { deleteDeck: deleteDeck,
+                               //                        name: this.state.text,
+                               //                        numCards: 0,
+                               //                        deck: newDeck } )
+
+
 
     }
 
@@ -45,6 +50,8 @@ class NewDeck extends Component {
     const { params} = this.props.navigation.state;
     let createDeckFxn = params.createNewDeck
     let deleteDeck = params.deleteDeck
+    let updateDeck = params.updateDeck
+    console.log ("NewDeck updateDeck fxn is ", params.updateDeck)
 
     return (
         <View>
@@ -58,7 +65,7 @@ class NewDeck extends Component {
 
            <Button title='Create New Deck'
                    onPress={() =>{
-                     this.submit(createDeckFxn, this.props.navigation.navigate, deleteDeck)
+                     this.submit(createDeckFxn, this.props.navigation.navigate, deleteDeck, updateDeck)
             }} />
 
 

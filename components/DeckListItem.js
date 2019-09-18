@@ -10,8 +10,9 @@ class DeckListItem extends Component {
 
   render() {
 
-    const { name, deck, deleteDeck } = this.props
+    const { name, deck, deleteDeck, updateDeck } = this.props
 
+    console.log("DeskListItem: updateDeck fxn ", updateDeck)
     return (
         <View>
             <ListItem

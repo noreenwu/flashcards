@@ -16,11 +16,9 @@ class DeckDetail extends Component {
     const { navigation } = this.props   // used for Delete Deck
     const { params } = this.props.navigation.state;
 
-    const { deck, deleteDeck, updateDeck } = params
+    const { deck } = params
     const numCards = deck.questions.length
-    // const name = params.name
-    // const numCards = params.numCards
-    // let deleteDeck = params.deleteDeck
+    console.log("DeckDetail updateDeck fxn is ", params.updateDeck)
 
     return (
         <View>
@@ -31,7 +29,7 @@ class DeckDetail extends Component {
               title="Add Card"
               onPress={() => this.props.navigation.navigate('NewCard',
                                                               { deck: deck,
-                                                               updateDeck: updateDeck,
+                                                               updateDeck: params.updateDeck,
                                                                deleteDeck: params.deleteDeck })}
             >
            </Button>

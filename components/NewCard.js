@@ -8,12 +8,9 @@ class NewCard extends Component {
     console.log("NewCard: submit updateFxn ", updateFxn)
     // add card to deck
     if (( this.state.question) && (this.state.answer) ) {
-       console.log("fields are filled:" , deck.questions)
        // put the card in the deck
        deck.questions.push({ question: this.state.question, answer: this.state.answer })
-       console.log("fields are filled and deck appended:" , deck.questions)
 
-      // let formattedDeck = { [deck.title] : deck }
        updateFxn(deck)
     }
 
@@ -53,7 +50,8 @@ class NewCard extends Component {
   render() {
     const { params } = this.props.navigation.state;
 
-    const { updateDeck, deck, deleteDeck } = params
+    const { deck, deleteDeck, updateDeck } = params
+
     console.log("NewCard deleteDeck received: ", deleteDeck)
 
     return (
@@ -74,12 +72,12 @@ class NewCard extends Component {
            />
            <Button
               title="Submit"
-              onPress={() => this.submit(updateDeck, params.deleteDeck, deck, this.props.navigation.navigate, true) }
+              onPress={() => this.submit(params.updateDeck, params.deleteDeck, deck, this.props.navigation.navigate, true) }
             >
            </Button>
            <Button
               title="Submit a bunch"
-              onPress={() => this.submit(updateDeck, params.deleteDeck, deck, this.props.navigation.navigate, false) }
+              onPress={() => this.submit(params.updateDeck, params.deleteDeck, deck, this.props.navigation.navigate, false) }
             >
            </Button>
            <Button

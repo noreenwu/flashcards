@@ -111,6 +111,7 @@ class AllDecks extends Component {
                  title="New Deck"
                  onPress={() => this.props.navigation.navigate('NewDeck',
                                                               { deleteDeck: this.deleteDeck.bind(this),
+                                                                updateDeck: this.updateDeck.bind(this),
                                                                 createNewDeck: this.createNewDeck.bind(this) })}
                />
             </View>
@@ -139,6 +140,7 @@ class AllDecks extends Component {
                     title="New Deck"
                     onPress={() => this.props.navigation.navigate('NewDeck',
                                                                  { deleteDeck: this.deleteDeck.bind(this),
+                                                                   updateDeck: this.updateDeck.bind(this),                                                                   
                                                                    createNewDeck: this.createNewDeck.bind(this) })}
                   />
 
