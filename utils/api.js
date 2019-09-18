@@ -107,20 +107,30 @@ export function deleteDeck(deckTitle) {
   })
 }
 
-export function saveDeckTitle(newDeckTitle) {
-  console.log("saveDeckTitle ", newDeckTitle)
-  decks_delta = {
-       [newDeckTitle]: {
-        title: newDeckTitle,
-        questions: []
-      }
-  }
-  AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify(decks_delta), () => {
+export function _saveDeckTitle(deck) {
+  console.log("_saveDeckTitle ", deck.title)
+
+  AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify(deck), () => {
     AsyncStorage.getItem(DECKS_STORAGE_KEY, (err, result) => {
       console.log(result);
     });
   });
 }
+
+// export function saveDeckTitle(newDeckTitle) {
+//   console.log("saveDeckTitle ", newDeckTitle)
+//   decks_delta = {
+//        [newDeckTitle]: {
+//         title: newDeckTitle,
+//         questions: []
+//       }
+//   }
+//   AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify(decks_delta), () => {
+//     AsyncStorage.getItem(DECKS_STORAGE_KEY, (err, result) => {
+//       console.log(result);
+//     });
+//   });
+// }
 
 export function addCardToDeck(title, card) {
 

@@ -13,7 +13,8 @@ class NewCard extends Component {
        deck.questions.push({ question: this.state.question, answer: this.state.answer })
        console.log("fields are filled and deck appended:" , deck.questions)
 
-       updateFxn(deck)
+      let formattedDeck = { [deck.title] : deck }
+       updateFxn(formattedDeck)
     }
 
     // clear the state

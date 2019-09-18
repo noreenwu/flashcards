@@ -8,7 +8,8 @@ import { initDecks, getDecks } from '../utils/api'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from '../reducers/dummyReducer'
-import { saveDeckTitle, deleteDeck } from '../utils/api'
+import { deleteDeck } from '../utils/api'
+import { saveDeckTitle } from '../utils/helpers'
 
 class AllDecks extends Component {
 
@@ -62,7 +63,7 @@ class AllDecks extends Component {
      }
   }
 
-  updateDecks(data){
+  updateDecksOrig(data){
     // being used to add a new deck. may be modified to take more general updates
 
         if (data) {
@@ -83,15 +84,35 @@ class AllDecks extends Component {
     }
 
 
+  updateDecks(title){
+    // being used to add a new deck. may be modified to take more general updates
+
+        if (title) {
+          let newDeck = saveDeckTitle(title)        // helper function
+          console.log("updateDecks", title)
+
+          // update this component's state
+          console.log("newDeck ", newDeck)
+          let origDecks = this.state.decks
+
+          let mergedDecks = Object.assign(origDecks, newDeck)
+
+          console.log("mergedDecks: ", mergedDecks)
+
+          this.setState({ decks: mergedDecks })
+         }
+    }
+
+
   updateDeck(deck) {
       // being used to add new card to a deck
       if (deck) {
         console.log("AllDecks: updateDeck ", deck)
         let origDecks = this.state.decks
-        let formattedDeck = { [deck.title] : deck }
+        // let formattedDeck = { [deck.title] : deck }
         console.log("updateDeck origDecks", origDecks)
-        console.log("incoming deck", formattedDeck)
-        let mergedDecks = Object.assign(origDecks, formattedDeck)
+        console.log("incoming deck", deck)
+        let mergedDecks = Object.assign(origDecks, deck)
         this.setState({ decks: mergedDecks })
       }
   }
