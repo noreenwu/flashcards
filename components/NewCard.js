@@ -6,12 +6,15 @@ class NewCard extends Component {
   submit(updateFxn, deleteFxn, deck, navFxn, navigateAway=true) {
     console.log("NewCard: submit updateFxn ", updateFxn)
     // add card to deck
-    if (( this.state.question) && (this.state.answer) ) {
-       // put the card in the deck
-       deck.questions.push({ question: this.state.question, answer: this.state.answer })
-
-       updateFxn(deck)
+    if ( (! this.state.question ) || (! this.state.answer) ) {
+        return
     }
+
+     // put the card in the deck
+     deck.questions.push({ question: this.state.question, answer: this.state.answer })
+
+     updateFxn(deck)
+
 
     // clear the state
     this.clearFields()
@@ -22,11 +25,6 @@ class NewCard extends Component {
                   { deleteDeck: deleteFxn,
                     updateDeck: updateFxn,
                     deck: deck })
-
-      // navFxn('DeckDetail', { deleteDeck: deleteFxn,
-      //                        name: deck.title,   // you must receive deleteDeck and pass it on to DeckDetail
-      //                        numCards: deck.questions.length,
-      //                        deck: deck } )
 
     }
 
