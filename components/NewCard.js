@@ -12,9 +12,9 @@ class NewCard extends Component {
 
      const card = { question: this.state.question, answer: this.state.answer }
      // put the card in the deck
-     deck.questions.push({ question: this.state.question, answer: this.state.answer })
+     deck.questions.push(card)
 
-     updateFxn(deck.title, card)
+     updateFxn(deck)
 
 
     // clear the state
@@ -52,7 +52,7 @@ class NewCard extends Component {
 
     const { deck, deleteDeck, updateDeck } = params
 
-    console.log("NewCard deleteDeck received: ", deleteDeck)
+    console.log("NewCard updateFxn received: ", updateDeck)
 
     return (
         <View>

@@ -54,10 +54,11 @@ export function saveCardToDeck(deckTitle, card) {
    _getDeck(deckTitle).
     then((results) => {
       console.log("deckData", results.questions)
-      results.questions.push(card)
-      let formattedDeck = formatChangedDeck(results)
-      console.log("formattedDeck ", formattedDeck)
-      _saveDeck(formattedDeck)
+      // let resultsCopy = Object.assign(resultsCopy, results)
+      // resultsCopy.questions.push(card)
+      // let formattedDeck = formatChangedDeck(resultsCopy)
+      // console.log("formattedDeck ", formattedDeck)
+      // _saveDeck(formattedDeck)
     }).catch((err) => {
         console.log("error saving card to deck", err)
     })
