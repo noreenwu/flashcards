@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Text, View, TextInput, Button, TouchableOpacity } from 'react-native';
-import { submitEntry, removeEntry, saveDeckTitle, getDecks } from '../utils/api'
 
 
 function SubmitBtn ({ onPress }) {

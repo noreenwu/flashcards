@@ -3,13 +3,12 @@ import React, { Component } from 'react'
 import { Text, View, Button, FlatList, Fragment } from 'react-native';
 import { connect } from 'react-redux'
 import DeckListItem from './DeckListItem'
-// import { ListItem } from 'react-native-elements'
 import { initDecks, getDecks } from '../utils/api'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from '../reducers/dummyReducer'
 import { deleteDeck } from '../utils/api'
-import { saveDeckTitle, saveDeck } from '../utils/helpers'
+import { saveDeckTitle, saveDeck, getDeck, saveCardToDeck } from '../utils/helpers'
 
 class AllDecks extends Component {
 
@@ -84,8 +83,20 @@ class AllDecks extends Component {
     }
 
 
+  // addCardToDeck(title, card) {
+  //    updatedDeck = saveCardToDeck(title, card)
+  //    // update this component's state
+  // }
+
   updateDeck(deck) {
       // being used to add new card to a deck
+
+
+     // test:
+      let card = { question: 'HI', answer: 'THERE' }
+      saveCardToDeck(deck.title, card)
+
+
       if (deck) {
         console.log("AllDecks: updateDeck ", deck)
         let origDecks = this.state.decks
@@ -140,7 +151,7 @@ class AllDecks extends Component {
                     title="New Deck"
                     onPress={() => this.props.navigation.navigate('NewDeck',
                                                                  { deleteDeck: this.deleteDeck.bind(this),
-                                                                   updateDeck: this.updateDeck.bind(this),                                                                   
+                                                                   updateDeck: this.updateDeck.bind(this),
                                                                    createNewDeck: this.createNewDeck.bind(this) })}
                   />
 

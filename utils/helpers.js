@@ -1,4 +1,5 @@
-import { _saveDeckTitle, _saveDeck } from './api'
+import { _saveDeckTitle, _saveDeck, _getDeck } from './api'
+
 
 export function formatNewDeck(newDeckTitle) {
   let formattedDeck = { [newDeckTitle] : { title: newDeckTitle,
@@ -14,13 +15,10 @@ export function formatChangedDeck(deck) {
 }
 
 
-export function getDecks() {
-}
+// export function getDecks() {
+// }
 
 
-async function getDeck(id) {
-
-}
 
 export function saveDeck(deck) {
   let formattedDeck = formatChangedDeck(deck)
@@ -37,6 +35,31 @@ export function saveDeckTitle(title) {
 }
 
 
-export function addCardToDeck(title, card) {
+export function getDeck(id) {
+  console.log("getDeck id ", id)
+
+  return _getDeck(id).
+    then((results) => {
+      console.log("deckData", results)
+    })
+
+}
+
+
+
+export function saveCardToDeck(deckTitle, card) {
+
+  console.log("saveCardToDeck")
+
+   _getDeck(deckTitle).
+    then((results) => {
+      console.log("deckData", results.questions)
+      results.questions.push(card)
+      let formattedDeck = formatChangedDeck(results)
+      console.log("formattedDeck ", formattedDeck)
+      _saveDeck(formattedDeck)
+    }).catch((err) => {
+        console.log("error saving card to deck", err)
+    })
 
 }

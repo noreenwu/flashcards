@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Text, View, TextInput, Button } from 'react-native';
-import { getDeck } from '../utils/helpers'
 
 class NewCard extends Component {
 
@@ -19,16 +18,18 @@ class NewCard extends Component {
 
     if (navigateAway) {
       //navigate to DeckDetail
-      // navFxn('DeckDetail',
-      //             { deleteDeck: deleteFxn,
-      //               updateDeck: updateFxn,
-      //               deck: deck })
-      navFxn('DeckDetail', { deleteDeck: deleteFxn,
-                             name: deck.title,   // you must receive deleteDeck and pass it on to DeckDetail
-                             numCards: deck.questions.length,
-                             deck: deck } )
+      navFxn('DeckDetail',
+                  { deleteDeck: deleteFxn,
+                    updateDeck: updateFxn,
+                    deck: deck })
+
+      // navFxn('DeckDetail', { deleteDeck: deleteFxn,
+      //                        name: deck.title,   // you must receive deleteDeck and pass it on to DeckDetail
+      //                        numCards: deck.questions.length,
+      //                        deck: deck } )
 
     }
+
 
   }
 

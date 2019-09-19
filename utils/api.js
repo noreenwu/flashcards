@@ -1,6 +1,6 @@
 // import { AsyncStorage } from '@react-native-community/async-storage';
 import { AsyncStorage } from 'react-native'
-// import { _getDecks } from './DATA';
+
 
 const DECKS_STORAGE_KEY = 'Flashcards:decks';
 
@@ -77,17 +77,13 @@ export function getDecks() {
     .then(results => JSON.parse(results))
 }
 
-export function getDeck(id) {
+export function _getDeck(id) {
 
   return AsyncStorage.getItem(DECKS_STORAGE_KEY)
     .then((results) => {
       const data = JSON.parse(results)
-      data[id]
       console.log("AsyncStorage.getItem", data[id])
-      // if (data[id]) {
-      //    ret = data[id]
-      //    console.log("ret is ", ret)
-      //  }
+      return data[id]
     })
 
 }
@@ -120,20 +116,7 @@ export function _saveDeck(deck) {
 
 
 
-export function addCardToDeck(title, card) {
 
-}
-
-// export function initDecks() {
-//   console.log("initDecks")
-//   return new Promise(function(resolve,reject) {
-//     AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks), () => {
-//       AsyncStorage.getItem(DECKS_STORAGE_KEY, (err, result) => {
-//         console.log(result)
-//       });
-//     });
-//   });
-// }
 export function initDecks() {
     console.log("initDecks")
     return AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks), () => {

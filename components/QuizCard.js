@@ -15,28 +15,16 @@ class QuizCard extends Component {
   }
 
   showAnswer() {
-    // let newIndex = this.state.idx
     let newMode = this.state.mode
 
     if (this.state.mode === QUESTION) {
         // newIndex = this.state.idx
         newMode = ANSWER
     }
-    // else { // ANSWER mode
-    //     if ( this.state.idx < numQuestions - 1) {
-    //       newIndex = this.state.idx + 1
-    //       newMode = QUESTION
-    //     }
-    //     else { // no more questions
-    //       newMode = RESULTS
-    //       newIndex = this.state.idx
-    //     }
-    //}
 
     this.setState({
       mode: newMode
     })
-    console.log("state should be updated with ",  newMode)
   }
 
 
