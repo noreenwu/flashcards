@@ -88,25 +88,30 @@ class AllDecks extends Component {
   //    // update this component's state
   // }
 
-  updateDeck(deck) {
+  updateDeck(title, card) {
       // being used to add new card to a deck
 
-
-     // test:
-      let card = { question: 'HI', answer: 'THERE' }
-      saveCardToDeck(deck.title, card)
-
-
-      if (deck) {
-        console.log("AllDecks: updateDeck ", deck)
-        let origDecks = this.state.decks
-        let formattedDeck = saveDeck(deck)     // calls fxn in helpers
-
-        console.log("updateDeck origDecks", origDecks)
-        console.log("incoming deck", formattedDeck)
-        let mergedDecks = Object.assign(origDecks, formattedDeck)
-        this.setState({ decks: mergedDecks })
+      if ((! title) || ( ! card)) {
+          console.log("updateDeck: no data ")
+          return
       }
+
+
+      saveCardToDeck(title, card)  // card saved to AsyncStorage
+
+      // let decksCopy = Object.assign(this.state.decks)
+
+      // console.log("decksCopy ", decksCopy)
+      // decksCopy[title].questions.push(card)
+      // console.log("decksCopy after ", decksCopy)
+
+      // let formattedDeck = saveDeck(deck)     // calls fxn in helpers
+
+      // let mergedDecks = Object.assign(origDecks, decksCopy)
+      // console.log("mergedDecks ", mergedDecks)
+
+      // this.setState({ decks: decksCopy })
+
   }
 
   render() {

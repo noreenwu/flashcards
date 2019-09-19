@@ -10,10 +10,11 @@ class NewCard extends Component {
         return
     }
 
+     const card = { question: this.state.question, answer: this.state.answer }
      // put the card in the deck
      deck.questions.push({ question: this.state.question, answer: this.state.answer })
 
-     updateFxn(deck)
+     updateFxn(deck.title, card)
 
 
     // clear the state
