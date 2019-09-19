@@ -4,7 +4,6 @@ import { Text, View, TextInput, Button } from 'react-native';
 class NewCard extends Component {
 
   submit(updateFxn, deleteFxn, deck, navFxn, navigateAway=true) {
-    console.log("NewCard: submit updateFxn ", updateFxn)
     // add card to deck
     if ( (! this.state.question ) || (! this.state.answer) ) {
         return
@@ -54,7 +53,7 @@ class NewCard extends Component {
 
     return (
         <View>
-           <Text>New Card will be added to specified Deck</Text>
+           <Text>New Card will be added to the {deck.title} Deck</Text>
 
            <TextInput
              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
