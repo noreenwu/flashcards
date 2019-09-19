@@ -30,21 +30,17 @@ let decks = {
 }
 
 
+
+
 // export function submitEntry ({ entry, key }) {
 //   return AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify({
 //     [key]: entry
-//   }))
+//   }), () => {
+//     AsyncStorage.getItem(DECKS_STORAGE_KEY, (err, result) => {
+//       console.log(result)
+//     });
+//   })
 // }
-
-export function submitEntry ({ entry, key }) {
-  return AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify({
-    [key]: entry
-  }), () => {
-    AsyncStorage.getItem(DECKS_STORAGE_KEY, (err, result) => {
-      console.log(result)
-    });
-  })
-}
 
 // export function removeEntry (key) {
 //   return AsyncStorage.getItem(DECKS_STORAGE_KEY)
@@ -56,18 +52,18 @@ export function submitEntry ({ entry, key }) {
 //     })
 // }
 
-export function removeEntry (key) {
-  return AsyncStorage.getItem(DECKS_STORAGE_KEY)
-    .then((results) => {
-      const data = JSON.parse(results)
-      data[key] = undefined
-      delete data[key]
-      AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(data), () => {
-        AsyncStorage.getItem(DECKS_STORAGE_KEY, (err, result) => {
-          console.log(result)
-      })
-    })
-})}
+// export function removeEntry (key) {
+//   return AsyncStorage.getItem(DECKS_STORAGE_KEY)
+//     .then((results) => {
+//       const data = JSON.parse(results)
+//       data[key] = undefined
+//       delete data[key]
+//       AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(data), () => {
+//         AsyncStorage.getItem(DECKS_STORAGE_KEY, (err, result) => {
+//           console.log(result)
+//       })
+//     })
+// })}
 
 
 
@@ -89,7 +85,7 @@ export function _getDeck(id) {
 }
 
 
-export function deleteDeck(deckTitle) {
+export function _deleteDeck(deckTitle) {
   return AsyncStorage.getItem(DECKS_STORAGE_KEY)
     .then((results) => {
       const data = JSON.parse(results)

@@ -18,7 +18,6 @@ class DeckDetail extends Component {
 
     const { deck } = params
     const numCards = deck.questions.length
-    console.log("DeckDetail updateDeck fxn is ", params.updateDeck)
 
     return (
         <View>

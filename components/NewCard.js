@@ -52,8 +52,6 @@ class NewCard extends Component {
 
     const { deck, deleteDeck, updateDeck } = params
 
-    console.log("NewCard updateFxn received: ", updateDeck)
-
     return (
         <View>
            <Text>New Card will be added to specified Deck</Text>

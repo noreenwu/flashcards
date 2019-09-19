@@ -1,4 +1,4 @@
-import { _saveDeckTitle, _saveDeck, _getDeck } from './api'
+import { _saveDeckTitle, _saveDeck, _getDeck, _deleteDeck } from './api'
 
 
 export function formatNewDeck(newDeckTitle) {
@@ -32,6 +32,11 @@ export function saveDeckTitle(title) {
   _saveDeck(formattedDeck)
 
   return formattedDeck   // this will facilitate updating the state in the component
+}
+
+export function deleteDeck(deckTitle) {
+
+  return _deleteDeck(deckTitle)
 }
 
 

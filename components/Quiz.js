@@ -6,7 +6,6 @@ class Quiz extends Component {
 
   render() {
     const { params } = this.props.navigation.state;
-    console.log("Quiz Me: the delete funcion pass in is ", params.deleteDeck)
     const { deck } = this.props.navigation.state.params;
 
     const numQuestions = deck.questions.length

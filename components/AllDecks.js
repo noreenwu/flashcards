@@ -1,14 +1,13 @@
 
 import React, { Component } from 'react'
 import { Text, View, Button, FlatList, Fragment } from 'react-native';
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import DeckListItem from './DeckListItem'
 import { initDecks, getDecks } from '../utils/api'
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import reducer from '../reducers/dummyReducer'
-import { deleteDeck } from '../utils/api'
-import { saveDeckTitle, saveDeck, getDeck, saveCardToDeck } from '../utils/helpers'
+// import { createStore } from 'redux'
+// import { Provider } from 'react-redux'
+// import reducer from '../reducers/dummyReducer'
+import { saveDeckTitle, saveDeck, getDeck, saveCardToDeck, deleteDeck } from '../utils/helpers'
 
 class AllDecks extends Component {
 
@@ -83,15 +82,9 @@ class AllDecks extends Component {
     }
 
 
-  // addCardToDeck(title, card) {
-  //    updatedDeck = saveCardToDeck(title, card)
-  //    // update this component's state
-  // }
 
   updateDeck(deck) {
-      // being used to add new card to a deck
-      // console.log("AllDecks: updateDeck: title passed in was ", title)
-      // console.log("card was ", card)
+
       if (! deck) {
           console.log("updateDeck: no data ")
           return
@@ -163,4 +156,3 @@ class AllDecks extends Component {
 
 
 export default AllDecks
-// export default connect(mapStateToProps)(AllDecks)
