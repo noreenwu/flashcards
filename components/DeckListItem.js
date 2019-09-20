@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { Text, View, Button } from 'react-native'
+import { Text, View, Button, StyleSheet } from 'react-native'
 import { ListItem } from 'react-native-elements'
 import PropTypes from 'prop-types'
 
@@ -23,7 +23,7 @@ class DeckListItem extends Component {
 
     return (
         <View>
-            <ListItem
+            <ListItem style={styles.listItem}
                key={name}
                title={name}
                subtitle={`${deck.questions.length} ${this.cardOrCards(deck.questions.length)}`}
@@ -49,3 +49,13 @@ DeckListItem.propTypes = {
 }
 
 export default DeckListItem
+
+const styles = StyleSheet.create({
+  listItem: {
+    marginTop: 20,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderTopColor: '#cbd2d9',
+    borderBottomColor: '#cbd2d9'
+  },
+});

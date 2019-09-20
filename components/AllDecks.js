@@ -125,7 +125,7 @@ class AllDecks extends Component {
         return (
             <View style={styles.container}>
 
-                  <Text>All Decks!</Text>
+                  <Text style={styles.greenLarge}>Flashcards!</Text>
                       <View>
                       { deckValues.map(val => (
 
@@ -158,10 +158,14 @@ class AllDecks extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
 
   },
-
+  greenLarge: {
+    color: 'green',
+    fontWeight: 'bold',
+    fontSize: 40
+  }
 })
 
 
