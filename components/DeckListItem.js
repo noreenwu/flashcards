@@ -8,6 +8,15 @@ import PropTypes from 'prop-types'
 class DeckListItem extends Component {
 
 
+  cardOrCards(len) {
+    if (len === 1) {
+      return 'card'
+    }
+    else {
+      return 'cards'
+    }
+  }
+
   render() {
 
     const { name, deck, deleteDeck, updateDeck } = this.props
@@ -17,13 +26,14 @@ class DeckListItem extends Component {
             <ListItem
                key={name}
                title={name}
+               subtitle={`${deck.questions.length} ${this.cardOrCards(deck.questions.length)}`}
+
                onPress={() => this.props.navigate('DeckDetail',
                                                    { deleteDeck: this.props.deleteDeck,
                                                      updateDeck: this.props.updateDeck,
                                                      deck: this.props.deck }
                                                    )}
             />
-           <Text>{this.props.deck.questions.length} { this.props.deck.questions.length === 1? 'card' : 'cards'} </Text>
 
         </View>
 

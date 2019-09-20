@@ -5,6 +5,7 @@ export const ANSWER = 'answer'
 export const RESULTS = 'results'
 import QuizResults from './QuizResults'
 import PropTypes from 'prop-types'
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 
 class QuizCard extends Component {
   state = {
@@ -25,6 +26,11 @@ class QuizCard extends Component {
     this.setState({
       mode: newMode
     })
+
+    // clear and set notifications
+    clearLocalNotification()
+      .then(setLocalNotification())
+
   }
 
 

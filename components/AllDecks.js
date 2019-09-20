@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { Text, View, Button, FlatList, Fragment } from 'react-native';
+import { Text, View, Button, FlatList, Fragment, StyleSheet } from 'react-native';
 // import { connect } from 'react-redux'
 import DeckListItem from './DeckListItem'
 import { initDecks, getDecks } from '../utils/api'
@@ -8,10 +8,12 @@ import { initDecks, getDecks } from '../utils/api'
 // import { Provider } from 'react-redux'
 // import reducer from '../reducers/dummyReducer'
 import { saveDeckTitle, saveDeck, getDeck, saveCardToDeck, deleteDeck } from '../utils/helpers'
+import { setLocalNotification } from '../utils/helpers'
 
 class AllDecks extends Component {
 
    componentDidMount() {
+    setLocalNotification()
 
     initDecks()
       .then(getDecks()
@@ -121,7 +123,7 @@ class AllDecks extends Component {
           )
         }
         return (
-            <View>
+            <View style={styles.container}>
 
                   <Text>All Decks!</Text>
                       <View>
@@ -153,6 +155,14 @@ class AllDecks extends Component {
 }
 
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+
+  },
+
+})
 
 
 export default AllDecks
