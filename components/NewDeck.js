@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, TextInput, Button, TouchableOpacity } from 'react-native';
-
+import { styles } from './styles'
 
 function SubmitBtn ({ onPress }) {
   return (
@@ -18,30 +18,32 @@ class NewDeck extends Component {
 
   submit(createDeckFxn, navFxn, deleteDeck, updateDeck) {
 
-    console.log("this.state ", this.state)
-    if ( Object.keys(this.state).length != 0 ) {
-        // use fxn to update AllDecks' state which will also update AsyncStorage
-        createDeckFxn(this.state.text)
 
-
-        const newTitle = this.state.text
-        const newDeck = { title: newTitle,
-                          questions:[] }
-
-        this.setState( { text: '' })    // this clears the state and field on the screen for Create New Deck
-        navFxn('DeckDetail', { deleteDeck: deleteDeck,
-                               updateDeck: updateDeck,
-                               deck: newDeck } )
-                               // navFxn('DeckDetail', { deleteDeck: deleteDeck,
-                               //                        name: this.state.text,
-                               //                        numCards: 0,
-                               //                        deck: newDeck } )
-
-
-
+    if ( Object.keys(this.state).length == 0 ) {
+        return
     }
+    // use fxn to update AllDecks' state which will also update AsyncStorage
+    createDeckFxn(this.state.text)
+
+
+    const newTitle = this.state.text
+    const newDeck = { title: newTitle,
+                      questions:[] }
+
+    this.setState( { text: '' })    // this clears the state and field on the screen for Create New Deck
+    navFxn('DeckDetail', { deleteDeck: deleteDeck,
+                           updateDeck: updateDeck,
+                           deck: newDeck } )
+                           // navFxn('DeckDetail', { deleteDeck: deleteDeck,
+                           //                        name: this.state.text,
+                           //                        numCards: 0,
+                           //                        deck: newDeck } )
+
+
 
   }
+
+
 
 
   render() {
@@ -54,18 +56,21 @@ class NewDeck extends Component {
 
     return (
         <View>
-           <Text>New Deck: What is the name of your new deck?</Text>
+           <Text style={styles.greenMedium}>Give your new deck a name: </Text>
            <TextInput
              style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-             placeholder="Name of your new deck here!"
+             placeholder="Name of your new deck"
              onChangeText={(text) => this.setState({text})}
              value={this.state.text}
            />
 
-           <Button title='Create New Deck'
+           <TouchableOpacity
+                   style={styles.button}
+                   title='Create New Deck'
                    onPress={() =>{
                      this.submit(createDeckFxn, this.props.navigation.navigate, deleteDeck, updateDeck)
-            }} />
+            }} ><Text style={styles.buttonText}>Create New Deck</Text>
+            </TouchableOpacity>
 
 
            <Button

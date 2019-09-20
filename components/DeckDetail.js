@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, TouchableOpacity } from 'react-native'
+import { styles } from './styles'
+
 import PropTypes from 'prop-types'
 
 class DeckDetail extends Component {
@@ -21,30 +23,39 @@ class DeckDetail extends Component {
 
     return (
         <View>
-           <Text>Deck Detail Page: Deck Name: {deck.title}</Text>
-           <Text>{numCards} cards</Text>
+           <Text style={styles.greenMedium}>{deck.title}</Text>
+           <Text style={styles.center}>This deck currently has {numCards} cards.</Text>
 
-           <Button
+           <TouchableOpacity
+              style={styles.button}
               title="Add Card"
               onPress={() => this.props.navigation.navigate('NewCard',
                                                               { deck: deck,
                                                                updateDeck: params.updateDeck,
                                                                deleteDeck: params.deleteDeck })}
             >
-           </Button>
+            <Text style={styles.buttonText}>Add Card to {deck.title} Deck</Text>
+           </TouchableOpacity>
 
-           <Button
+           <TouchableOpacity
+             style={styles.button}
              title="Quiz Me"
              onPress={() => this.props.navigation.navigate('Quiz',
                                                           { deck: deck,
                                                             deleteDeck: params.deleteDeck })}
 
-           />
+           >
+           <Text style={styles.buttonText}>Quiz Me on {deck.title}</Text>
+           </TouchableOpacity>
 
-           <Button
+           <TouchableOpacity
+              style={styles.button}
               title="Delete Deck"
               onPress={() => { this.deleteThisDeck(params.deleteDeck, deck.title, navigation.navigate)
-              }}/>
+              }}
+           >
+           <Text style={styles.buttonText}>Delete the {deck.title} Deck</Text>
+           </TouchableOpacity>
 
         </View>
 

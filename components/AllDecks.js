@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { Text, View, Button, FlatList, Fragment, StyleSheet } from 'react-native';
+import { Text, View, Button, FlatList, Fragment, TouchableOpacity } from 'react-native';
 // import { connect } from 'react-redux'
 import DeckListItem from './DeckListItem'
 import { initDecks, getDecks } from '../utils/api'
@@ -9,6 +9,7 @@ import { initDecks, getDecks } from '../utils/api'
 // import reducer from '../reducers/dummyReducer'
 import { saveDeckTitle, saveDeck, getDeck, saveCardToDeck, deleteDeck } from '../utils/helpers'
 import { setLocalNotification } from '../utils/helpers'
+import { styles } from './styles'
 
 class AllDecks extends Component {
 
@@ -141,32 +142,20 @@ class AllDecks extends Component {
                       ))
                       }
                   </View>
-                  <Button
+                  <TouchableOpacity
+                    style={styles.button}
                     title="New Deck"
                     onPress={() => this.props.navigation.navigate('NewDeck',
                                                                  { deleteDeck: this.deleteDeck.bind(this),
                                                                    updateDeck: this.updateDeck.bind(this),
                                                                    createNewDeck: this.createNewDeck.bind(this) })}
-                  />
+                  ><Text style={styles.buttonText}>New Deck</Text></TouchableOpacity>
 
             </View>
     )
   }
 }
 
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'flex-start',
-
-  },
-  greenLarge: {
-    color: 'green',
-    fontWeight: 'bold',
-    fontSize: 40
-  }
-})
 
 
 export default AllDecks
