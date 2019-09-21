@@ -112,14 +112,17 @@ class AllDecks extends Component {
         if (deckValues.length === 0) {
           return (
             <View>
-               <Text>No Decks! Create one!</Text>
-               <Button
+               <Text style={styles.titleLarge}>Flashcards!</Text>            
+               <Text style={styles.center}>There aren't any decks! Create one!</Text>
+               <TouchableOpacity
+                 style={styles.button}
                  title="New Deck"
                  onPress={() => this.props.navigation.navigate('NewDeck',
                                                               { deleteDeck: this.deleteDeck.bind(this),
                                                                 updateDeck: this.updateDeck.bind(this),
                                                                 createNewDeck: this.createNewDeck.bind(this) })}
-               />
+               ><Text style={styles.buttonText}>New Deck</Text>
+               </TouchableOpacity>
             </View>
           )
         }
