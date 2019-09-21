@@ -71,5 +71,13 @@ export const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontWeight: 'bold'
+  },
+  smallButton: {
+    alignItems: 'center',
+    margin: 10,
+    padding: 7,
+    width: 100,
+    borderRadius: 15,
+    backgroundColor: 'green'
   }
 })

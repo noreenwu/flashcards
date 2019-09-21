@@ -115,11 +115,13 @@ class QuizCard extends Component {
                   </View>
                 : <View><Text>Answer {answer} </Text>
 
-                    <Button
+                    <TouchableOpacity
+                       style={styles.smallButton}
                        title="Correct"
                        onPress={() => this.tallyCorrect(totQuestions)}
                      >
-                    </Button>
+                     <Text>Correct</Text>
+                    </TouchableOpacity>
                     <Button
                        title="Incorrect"
                        onPress={() => this.tallyIncorrect(totQuestions)}
