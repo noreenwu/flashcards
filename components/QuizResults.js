@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, Button } from 'react-native';
 import PropTypes from 'prop-types'
-
+import { styles } from './styles'
 
 const RESULTS = 'results'
 
@@ -9,22 +9,20 @@ class QuizResults extends Component {
 
 
   render() {
-    const { mode, numQuestions, numCorrect } = this.props
+    const { numQuestions, numCorrect } = this.props
+    const percentage = Math.round((numCorrect * 100)/numQuestions);
 
-    if ( mode === RESULTS ) {
-      return (
-        <View>
-          <Text>Quiz Results!</Text>
-          <Text>You got {numCorrect} right out of {numQuestions}</Text>
-        </View>
-      )
-    }
-    return (null)
+    return (
+      <View>
+        <Text style={styles.subtitleMedium}>How Did You Do?</Text>
+        <Text style={styles.center}>You got {numCorrect} out of {numQuestions} correct or {percentage}% correct. </Text>
+      </View>
+    )
+
   }
 }
 
 QuizResults.propTypes = {
-  mode: PropTypes.string.isRequired,
   numCorrect: PropTypes.number.isRequired,
   numQuestions: PropTypes.number.isRequired,
 }

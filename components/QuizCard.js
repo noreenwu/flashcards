@@ -97,59 +97,60 @@ class QuizCard extends Component {
     const numQuestionsLeft = totQuestions - this.state.idx - 1
 
 
-    return(
-      <View>
 
-
-            { ( this.state.mode === QUESTION  )
-               ?  <View>
-                    <Text style={styles.questionAnswer}>
-                      Question: { question }
-                    </Text>
-                    <Text
-                        style={styles.clickable}
-                        onPress={() => this.showAnswer()}
-                    >Show Answer</Text>
-
-                  </View>
-                : <View><Text style={styles.questionAnswer}>Answer: {answer} </Text>
-
-                    <TouchableOpacity
-                       style={Object.assign({}, styles.smallButton, {backgroundColor: 'green'})}
-                       title="Correct"
-                       onPress={() => this.tallyCorrect(totQuestions)}
-                     >
-                     <Text style={styles.buttonText}>Correct</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                       style={Object.assign({}, styles.smallButton, {backgroundColor: 'red'})}
-                       title="Incorrect"
-                       onPress={() => this.tallyIncorrect(totQuestions)}
-                     ><Text style={styles.buttonText}>Incorrect</Text>
-                    </TouchableOpacity>
-
-                  <QuizResults mode={this.state.mode} numQuestions={deck.questions.length} numCorrect={this.state.numCorrect}/>
-
-                  </View>
-             }
-
-             <Text style={styles.centerNoMargin}>Question {this.state.idx + 1} of {totQuestions}, {numQuestionsLeft} more after this</Text>
+    if ( this.state.mode === QUESTION ) {
+      return (
+           <View>
+             <Text style={styles.centerNoMargin}>Question {this.state.idx + 1} of {totQuestions}</Text>
              <Text style={styles.centerBottomMargin}> ({numQuestionsLeft} more after this)</Text>
+             <Text style={styles.questionAnswer}>
+               Question: { question }
+             </Text>
+             <Text
+                 style={styles.clickable}
+                 onPress={() => this.showAnswer()}
+             >Show Answer</Text>
 
-             <TouchableOpacity
-               style={styles.button}
-               title="Start Quiz Over"
-               onPress={() => { this.reset() }}
-             ><Text style={styles.buttonText}>Start Quiz Over</Text>
-             </TouchableOpacity>
+           </View>
+       )
+     }
 
+     else if ( this.state.mode === ANSWER ) {
+       return (
+           <View><Text style={styles.questionAnswer}>Answer: {answer} </Text>
 
+               <TouchableOpacity
+                  style={Object.assign({}, styles.smallButton, {backgroundColor: 'green'})}
+                  title="Correct"
+                  onPress={() => this.tallyCorrect(totQuestions)}
+                >
+                <Text style={styles.buttonText}>Correct</Text>
+               </TouchableOpacity>
+               <TouchableOpacity
+                  style={Object.assign({}, styles.smallButton, {backgroundColor: 'red'})}
+                  title="Incorrect"
+                  onPress={() => this.tallyIncorrect(totQuestions)}
+                ><Text style={styles.buttonText}>Incorrect</Text>
+               </TouchableOpacity>
 
-      </View>
+             </View>
+        )
+     }
+     else {
+          return(
+              <View>
+                  <QuizResults numQuestions={deck.questions.length} numCorrect={this.state.numCorrect}/>
 
-    )
-  }
-
+                  <TouchableOpacity
+                    style={styles.button}
+                    title="Start Quiz Over"
+                    onPress={() => { this.reset() }}
+                  ><Text style={styles.buttonText}>Start Quiz Over</Text>
+                  </TouchableOpacity>
+              </View>
+          )
+     }
+   }
 }
 
 QuizCard.propTypes = {

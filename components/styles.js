@@ -40,7 +40,9 @@ export const styles = StyleSheet.create({
   },
   clickable: {
     color: 'blue',
-    textAlign: 'center'
+    fontSize: 16,
+    textAlign: 'center',
+    marginBottom: 10
   },
   questionAnswer: {
     color: '#1d51a2',
