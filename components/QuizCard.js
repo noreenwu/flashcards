@@ -102,8 +102,12 @@ class QuizCard extends Component {
       return (
            <View>
              <Text style={styles.centerNoMargin}>Question {this.state.idx + 1} of {totQuestions}</Text>
-             <Text style={styles.centerBottomMargin}> ({numQuestionsLeft} more after this)</Text>
-             <Text style={styles.questionAnswer}>
+             { ( numQuestionsLeft > 0 )
+                ? <Text style={styles.centerBottomMargin}> ({numQuestionsLeft} more after this)</Text>
+                : <Text style={styles.centerBottomMargin}> (none left after this: last question!)</Text>
+              }
+               <Text style={styles.questionAnswer}>
+
                Question: { question }
              </Text>
              <Text

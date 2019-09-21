@@ -14,7 +14,7 @@ class QuizResults extends Component {
 
     return (
       <View>
-        <Text style={styles.subtitleMedium}>How Did You Do?</Text>
+        <Text style={Object.assign({}, styles.subtitleMediumPartialTop, {fontStyle: 'italic'})}>How Did You Do?</Text>
         <Text style={styles.center}>You got {numCorrect} out of {numQuestions} correct or {percentage}% correct. </Text>
       </View>
     )
