@@ -42,6 +42,14 @@ export const styles = StyleSheet.create({
     color: 'blue',
     textAlign: 'center'
   },
+  questionAnswer: {
+    color: '#1d51a2',
+    fontWeight: 'bold',
+    fontStyle: 'italic',
+    fontSize: 18,
+    margin: 20,
+    textAlign: 'center'
+  },
   textInput: {
     height: 40,
     borderColor: 'gray',
@@ -75,9 +83,9 @@ export const styles = StyleSheet.create({
   smallButton: {
     alignItems: 'center',
     margin: 10,
-    padding: 7,
+    padding: 10,
     width: 100,
     borderRadius: 15,
-    backgroundColor: 'green'
+    alignSelf: 'center'
   }
 })

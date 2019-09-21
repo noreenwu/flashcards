@@ -100,40 +100,41 @@ class QuizCard extends Component {
     return(
       <View>
 
-            <Text style={styles.centerNoMargin}>Question {this.state.idx + 1} of {totQuestions}</Text>
-            <Text style={styles.centerBottomMargin}> ({numQuestionsLeft} more after this)</Text>
+
             { ( this.state.mode === QUESTION  )
                ?  <View>
-                    <Text style={styles.center}>
-                      { question }
+                    <Text style={styles.questionAnswer}>
+                      Question: { question }
                     </Text>
                     <Text
                         style={styles.clickable}
                         onPress={() => this.showAnswer()}
-                    >(click for Answer)</Text>
+                    >Show Answer</Text>
 
                   </View>
-                : <View><Text>Answer {answer} </Text>
+                : <View><Text style={styles.questionAnswer}>Answer: {answer} </Text>
 
                     <TouchableOpacity
-                       style={styles.smallButton}
+                       style={Object.assign({}, styles.smallButton, {backgroundColor: 'green'})}
                        title="Correct"
                        onPress={() => this.tallyCorrect(totQuestions)}
                      >
-                     <Text>Correct</Text>
+                     <Text style={styles.buttonText}>Correct</Text>
                     </TouchableOpacity>
-                    <Button
+                    <TouchableOpacity
+                       style={Object.assign({}, styles.smallButton, {backgroundColor: 'red'})}
                        title="Incorrect"
                        onPress={() => this.tallyIncorrect(totQuestions)}
-                     >
-                    </Button>
+                     ><Text style={styles.buttonText}>Incorrect</Text>
+                    </TouchableOpacity>
 
                   <QuizResults mode={this.state.mode} numQuestions={deck.questions.length} numCorrect={this.state.numCorrect}/>
 
                   </View>
-
-
              }
+
+             <Text style={styles.centerNoMargin}>Question {this.state.idx + 1} of {totQuestions}, {numQuestionsLeft} more after this</Text>
+             <Text style={styles.centerBottomMargin}> ({numQuestionsLeft} more after this)</Text>
 
              <TouchableOpacity
                style={styles.button}
