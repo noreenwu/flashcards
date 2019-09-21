@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, TouchableOpacity } from 'react-native';
 import QuizCard from './QuizCard'
 import { styles } from './styles'
+import CardsInDeck from './CardsInDeck'
+
+
 class Quiz extends Component {
 
   render() {
@@ -18,20 +21,25 @@ class Quiz extends Component {
         )
     }
 
+    // const cardPlur = cardOrCards(numQuestions)
+
     return (
         <View>
-           <Text>{deck.title}</Text>
-           <Text>{numQuestions} cards</Text>
+           <Text style={styles.subtitleMediumPartialTop}>{deck.title}</Text>
+           <CardsInDeck numQuestions={numQuestions}/>
 
            <QuizCard deck={deck} navFxn={this.props.navigation.navigate} />
 
-           <Button
+           <TouchableOpacity
+             style={styles.button}
              title="Deck Options"
              onPress={() => this.props.navigation.navigate('DeckDetail',
                                                           { deleteDeck: params.deleteDeck,
                                                             deck: deck })}
 
-           />
+           >
+           <Text style={styles.buttonText}>Deck Options</Text>
+           </TouchableOpacity>
         </View>
 
     );

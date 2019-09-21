@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, TouchableOpacity } from 'react-native';
 export const QUESTION = 'question'
 export const ANSWER = 'answer'
 export const RESULTS = 'results'
 import QuizResults from './QuizResults'
 import PropTypes from 'prop-types'
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
+import { styles } from './styles'
 
 class QuizCard extends Component {
   state = {
@@ -99,17 +100,20 @@ class QuizCard extends Component {
     return(
       <View>
 
-            <Text>Question {this.state.idx + 1} of {totQuestions} ({numQuestionsLeft} more after this)</Text>
+            <Text style={styles.centerNoMargin}>Question {this.state.idx + 1} of {totQuestions}</Text>
+            <Text style={styles.centerBottomMargin}> ({numQuestionsLeft} more after this)</Text>
             { ( this.state.mode === QUESTION  )
                ?  <View>
-                    <Text>Question
-                    { question }
-                      <Text
-                        onPress={() => this.showAnswer()}
-                      >(click for Answer)</Text>
+                    <Text style={styles.center}>
+                      { question }
                     </Text>
+                    <Text
+                        style={styles.clickable}
+                        onPress={() => this.showAnswer()}
+                    >(click for Answer)</Text>
+
                   </View>
-                : <View><Text>Answer {answer}</Text>
+                : <View><Text>Answer {answer} </Text>
 
                     <Button
                        title="Correct"
@@ -129,10 +133,12 @@ class QuizCard extends Component {
 
              }
 
-             <Button
+             <TouchableOpacity
+               style={styles.button}
                title="Start Quiz Over"
                onPress={() => { this.reset() }}
-             />
+             ><Text style={styles.buttonText}>Start Quiz Over</Text>
+             </TouchableOpacity>
 
 
 

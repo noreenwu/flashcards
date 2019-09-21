@@ -38,6 +38,10 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: 'center'
   },
+  clickable: {
+    color: 'blue',
+    textAlign: 'center'
+  },
   textInput: {
     height: 40,
     borderColor: 'gray',
@@ -48,6 +52,13 @@ export const styles = StyleSheet.create({
   center: {
     textAlign: 'center',
     margin: 20
+  },
+  centerNoMargin: {
+    textAlign: 'center',
+  },
+  centerBottomMargin: {
+    textAlign: 'center',
+    marginBottom: 10
   },
   button: {
     alignItems: 'center',
