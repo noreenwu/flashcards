@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, Button } from 'react-native';
 import QuizCard from './QuizCard'
-
+import { styles } from './styles'
 class Quiz extends Component {
 
   render() {
@@ -13,7 +13,7 @@ class Quiz extends Component {
     if (deck.questions.length === 0) {
         return (
            <View>
-              <Text>Sorry, there aren't any cards in the {deck.title} deck. Create some cards first!</Text>
+              <Text style={styles.center}>Sorry, there aren't any cards in the {deck.title} deck. Create some cards first!</Text>
            </View>
         )
     }

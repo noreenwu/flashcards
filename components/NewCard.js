@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Text, View, TextInput, Button } from 'react-native';
+import { Text, View, TextInput, Button, TouchableOpacity } from 'react-native';
+import { styles } from './styles'
 
 class NewCard extends Component {
 
@@ -27,8 +28,6 @@ class NewCard extends Component {
                     deck: deck })
 
     }
-
-
   }
 
   clearFields() {
@@ -53,35 +52,30 @@ class NewCard extends Component {
 
     return (
         <View>
-           <Text>New Card will be added to the {deck.title} Deck</Text>
+           <Text style={styles.subtitleMediumPartialTop}>Add a new card to the</Text>
+           <Text style={styles.subtitleMediumPartialBottom}> {deck.title} Deck</Text>
 
            <TextInput
-             style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-             placeholder="Enter your question here!"
+             style={styles.textInput}
+             placeholder="Enter your question here"
              onChangeText={(text) => this.setState({ question: text})}
              value={this.state.question}
            />
            <TextInput
-             style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
-             placeholder="Enter your answer here!"
+             style={styles.textInput}
+             placeholder="Enter your answer here"
              onChangeText={(text) => this.setState({ answer: text})}
              value={this.state.answer}
            />
-           <Button
+           <TouchableOpacity
+              style={styles.button}
               title="Submit"
               onPress={() => this.submit(params.updateDeck, params.deleteDeck, deck, this.props.navigation.navigate, true) }
-            >
-           </Button>
-           <Button
-              title="Submit a bunch"
-              onPress={() => this.submit(params.updateDeck, params.deleteDeck, deck, this.props.navigation.navigate, false) }
-            >
-           </Button>
-           <Button
-              title="Cancel"
-              onPress={() => this.props.navigation.navigate('DeckDetail')}
-            >
-           </Button>
+            ><Text style={styles.buttonText}>Submit</Text>
+           </TouchableOpacity>
+
+
+
         </View>
 
     );

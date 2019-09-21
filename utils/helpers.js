@@ -58,6 +58,15 @@ export function setLocalNotification () {
     })
 }
 
+export function cardOrCards(len) {
+  if (len === 1) {
+    return 'card'
+  }
+  else {
+    return 'cards'
+  }
+}
+
 export function formatNewDeck(newDeckTitle) {
   let formattedDeck = { [newDeckTitle] : { title: newDeckTitle,
                                            questions: [] }}

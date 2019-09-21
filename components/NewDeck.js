@@ -34,12 +34,6 @@ class NewDeck extends Component {
     navFxn('DeckDetail', { deleteDeck: deleteDeck,
                            updateDeck: updateDeck,
                            deck: newDeck } )
-                           // navFxn('DeckDetail', { deleteDeck: deleteDeck,
-                           //                        name: this.state.text,
-                           //                        numCards: 0,
-                           //                        deck: newDeck } )
-
-
 
   }
 
@@ -56,9 +50,9 @@ class NewDeck extends Component {
 
     return (
         <View>
-           <Text style={styles.greenMedium}>Give your new deck a name: </Text>
+           <Text style={styles.subtitleMedium}>Give your new deck a name: </Text>
            <TextInput
-             style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 10 }}
+             style={styles.textInput}
              placeholder="Name of your new deck"
              onChangeText={(text) => this.setState({text})}
              value={this.state.text}

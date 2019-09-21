@@ -3,19 +3,10 @@ import React, { Component } from 'react'
 import { Text, View, Button, StyleSheet } from 'react-native'
 import { ListItem } from 'react-native-elements'
 import PropTypes from 'prop-types'
-
+import { cardOrCards } from '../utils/helpers'
 
 class DeckListItem extends Component {
 
-
-  cardOrCards(len) {
-    if (len === 1) {
-      return 'card'
-    }
-    else {
-      return 'cards'
-    }
-  }
 
   render() {
 
@@ -26,7 +17,7 @@ class DeckListItem extends Component {
             <ListItem style={styles.listItem}
                key={name}
                title={name}
-               subtitle={`${deck.questions.length} ${this.cardOrCards(deck.questions.length)}`}
+               subtitle={`${deck.questions.length} ${cardOrCards(deck.questions.length)}`}
 
                onPress={() => this.props.navigate('DeckDetail',
                                                    { deleteDeck: this.props.deleteDeck,

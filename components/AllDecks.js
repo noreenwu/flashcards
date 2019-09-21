@@ -126,7 +126,7 @@ class AllDecks extends Component {
         return (
             <View style={styles.container}>
 
-                  <Text style={styles.greenLarge}>Flashcards!</Text>
+                  <Text style={styles.titleLarge}>Flashcards!</Text>
                       <View>
                       { deckValues.map(val => (
 

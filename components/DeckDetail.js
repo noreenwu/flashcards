@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, Button, TouchableOpacity } from 'react-native'
 import { styles } from './styles'
-
+import { cardOrCards } from '../utils/helpers'
 import PropTypes from 'prop-types'
 
 class DeckDetail extends Component {
@@ -20,11 +20,12 @@ class DeckDetail extends Component {
 
     const { deck } = params
     const numCards = deck.questions.length
+    const cardPlur = cardOrCards(deck.questions.length)
 
     return (
         <View>
-           <Text style={styles.greenMedium}>{deck.title}</Text>
-           <Text style={styles.center}>This deck currently has {numCards} cards.</Text>
+           <Text style={styles.subtitleMedium}>{deck.title}</Text>
+           <Text style={styles.center}>This deck currently has {numCards} {cardPlur}.</Text>
 
            <TouchableOpacity
               style={styles.button}
