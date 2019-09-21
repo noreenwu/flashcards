@@ -5,6 +5,7 @@ import { ListItem } from 'react-native-elements'
 import PropTypes from 'prop-types'
 import { cardOrCards } from '../utils/helpers'
 import { Feather } from '@expo/vector-icons'
+import { styles } from './styles'
 
 class DeckListItem extends Component {
 
@@ -42,13 +43,3 @@ DeckListItem.propTypes = {
 }
 
 export default DeckListItem
-
-const styles = StyleSheet.create({
-  listItem: {
-    marginTop: 20,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderTopColor: '#cbd2d9',
-    borderBottomColor: '#cbd2d9'
-  },
-});

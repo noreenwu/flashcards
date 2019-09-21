@@ -9,7 +9,9 @@ export const styles = StyleSheet.create({
   titleLarge: {
     color: '#1d51a2',
     fontWeight: 'bold',
-    fontSize: 40
+    fontSize: 40,
+    marginLeft: 20,
+    marginTop: 10
   },
   subtitleMedium: {
     color: '#1d51a2',
@@ -37,6 +39,13 @@ export const styles = StyleSheet.create({
     marginRight: 20,
     marginBottom: 20,
     textAlign: 'center'
+  },
+  listItem: {
+    marginTop: 20,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderTopColor: '#cbd2d9',
+    borderBottomColor: '#cbd2d9'
   },
   clickable: {
     color: 'blue',
