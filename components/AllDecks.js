@@ -1,12 +1,8 @@
 
 import React, { Component } from 'react'
 import { Text, View, Button, FlatList, Fragment, TouchableOpacity } from 'react-native';
-// import { connect } from 'react-redux'
 import DeckListItem from './DeckListItem'
 import { initDecks, getDecks } from '../utils/api'
-// import { createStore } from 'redux'
-// import { Provider } from 'react-redux'
-// import reducer from '../reducers/dummyReducer'
 import { saveDeckTitle, saveDeck, getDeck, saveCardToDeck, deleteDeck } from '../utils/helpers'
 import { setLocalNotification } from '../utils/helpers'
 import { styles } from './styles'
@@ -70,15 +66,11 @@ class AllDecks extends Component {
 
         if (title) {
           let newDeck = saveDeckTitle(title)        // helper function
-          console.log("createNewDeck", title)
 
           // update this component's state
-          console.log("newDeck ", newDeck)
           let origDecks = this.state.decks
 
           let mergedDecks = Object.assign(origDecks, newDeck)
-
-          console.log("mergedDecks: ", mergedDecks)
 
           this.setState({ decks: mergedDecks })
          }
@@ -98,7 +90,6 @@ class AllDecks extends Component {
       let origDecks = this.state.decks
 
       let mergedDecks = Object.assign(origDecks, formattedDeck)
-      console.log("mergedDecks ", mergedDecks)
 
       this.setState({ decks: mergedDecks })
 
@@ -112,8 +103,8 @@ class AllDecks extends Component {
         if (deckValues.length === 0) {
           return (
             <View>
-               <Text style={styles.titleLarge}>Flashcards!</Text>            
-               <Text style={styles.center}>There aren't any decks! Create one!</Text>
+               <Text style={styles.titleLarge}>Flashcards!</Text>
+               <Text style={styles.center}>There aren't any decks. Create one!</Text>
                <TouchableOpacity
                  style={styles.button}
                  title="New Deck"
