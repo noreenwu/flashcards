@@ -10,7 +10,7 @@ import NewCard from './components/NewCard'
 import Quiz from './components/Quiz'
 import { styles, blue } from './components/styles'
 import { Feather } from '@expo/vector-icons'
-import Icon from 'react-native-vector-icons/FontAwesome5';
+// import Icon from 'react-native-vector-icons/FontAwesome5';
 
 
 export const AppNavigator = createStackNavigator(
@@ -45,7 +45,8 @@ const BottomTabNav = createBottomTabNavigator(
       screen: AppNavigator,
       navigationOptions: {
         tabBarIcon: ({tintColor}) =>
-          <Icon name="home" size={18}  color={tintColor}/>
+          <Feather name='layers' size={18} color={tintColor}/>
+
       }
     }
   },
