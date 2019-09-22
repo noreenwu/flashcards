@@ -2,15 +2,6 @@ import React, { Component } from 'react'
 import { Text, View, TextInput, Button, TouchableOpacity } from 'react-native';
 import { styles } from './styles'
 
-function SubmitBtn ({ onPress }) {
-  return (
-    <TouchableOpacity
-      onPress={onPress}>
-        <Text>SUBMIT</Text>
-    </TouchableOpacity>
-  )
-}
-
 
 class NewDeck extends Component {
 

@@ -7,6 +7,7 @@ import QuizResults from './QuizResults'
 import PropTypes from 'prop-types'
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 import { styles, blue } from './styles'
+import { cardOrCards } from '../utils/helpers'
 
 class QuizCard extends Component {
   state = {
@@ -99,12 +100,13 @@ class QuizCard extends Component {
 
 
     if ( this.state.mode === QUESTION ) {
+      const cardPlur = cardOrCards(numQuestionsLeft)
       return (
            <View>
              <Text style={styles.centerNoMargin}>Question {this.state.idx + 1} of {totQuestions}</Text>
              { ( numQuestionsLeft > 0 )
-                ? <Text style={styles.centerBottomMargin}> ({numQuestionsLeft} more after this)</Text>
-                : <Text style={styles.centerBottomMargin}> (none left after this: last question!)</Text>
+                ? <Text style={styles.centerBottomMargin}> ({numQuestionsLeft} more {cardPlur} after this)</Text>
+                : <Text style={styles.centerBottomMargin}> (No cards left after this: last question!)</Text>
               }
                <Text style={styles.questionAnswer}>
 
