@@ -13,7 +13,8 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 40,
     marginLeft: 20,
-    marginTop: 15
+    marginTop: 15,
+    textAlign: 'center'
   },
   subtitleMedium: {
     color: blue,
