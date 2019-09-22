@@ -67,11 +67,6 @@ class NewDeck extends Component {
             </TouchableOpacity>
 
 
-           <Button
-              title="Cancel"
-              onPress={() => this.props.navigation.navigate('AllDecks')}
-            >
-           </Button>
         </View>
 
     );
