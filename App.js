@@ -1,17 +1,16 @@
 import React from 'react';
-import { Button, View, Text, StyleSheet } from 'react-native';
+import { Button, View, Text, StyleSheet } from 'react-native'
 import { createAppContainer  } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
-import { createStackNavigator } from 'react-navigation-stack';
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import reducer from './reducers'
+import { createStackNavigator } from 'react-navigation-stack'
 import AllDecks from './components/AllDecks'
 import NewDeck from './components/NewDeck'
 import DeckDetail from './components/DeckDetail'
 import NewCard from './components/NewCard'
 import Quiz from './components/Quiz'
-
+import { styles, blue } from './components/styles'
+import { Feather } from '@expo/vector-icons'
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 
 export const AppNavigator = createStackNavigator(
@@ -42,27 +41,37 @@ export const AppNavigator = createStackNavigator(
 
 const BottomTabNav = createBottomTabNavigator(
   {
-    'All Decks': AppNavigator
+    'All Decks': {
+      screen: AppNavigator,
+      navigationOptions: {
+        tabBarIcon: ({tintColor}) =>
+          <Icon name="home" size={18}  color={tintColor}/>
+      }
+    }
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: 'white',
+      labelStyle: {
+        fontSize: 10,
+      },
+      style: {
+        backgroundColor: blue,
+      },
+    }
   }
 )
 
 const Navigator = createAppContainer(BottomTabNav);
 
 class App extends React.Component {
-  componentDidMount() {
-     console.log("App: componentDidMount")
-  }
+
   render() {
     return (
-        <Provider store={createStore(reducer)}>
-            <Navigator/>
-
-        </Provider>
+        <Navigator/>
     );
   }
 }
-
-
 
 
 export default Navigator;

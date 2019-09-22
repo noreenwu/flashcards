@@ -19,6 +19,7 @@ https://github.com/noreenwu/flashcards. It should require only npm install and n
 However, there was an issue in my environment which required that I run "expo start -c"
 in order to import the "expo" libraries.
 
+This has been tested in an ios simulator and on an actual Android Pixel 3 via Expo.
 
 ## Implementation Notes
 
@@ -35,6 +36,8 @@ There are 2 error Views:
   o there are no Decks in the app to display
   o there are no Cards in this Deck from which to run a quiz
 
+The notification reminder is scheduled for 8pm the next day. It is turned off for the day if
+the user utilizes the Quiz -- even if she does not finish the Quiz.
 
 Two starter decks are provided at App-startup (React, JavaScript). When the App loads, these
 are written and then read from AsyncStorage. Thereafter, changes made (new decks, cards added
