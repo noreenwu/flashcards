@@ -28,18 +28,9 @@ class Quiz extends Component {
            <Text style={styles.subtitleMediumPartialTop}>{deck.title}</Text>
            <CardsInDeck numQuestions={numQuestions}/>
 
-           <QuizCard deck={deck} navFxn={this.props.navigation.navigate} />
+           <QuizCard deck={deck} navFxn={this.props.navigation.navigate} deleteDeck={params.deleteDeck} deck={deck} />
 
-           <TouchableOpacity
-             style={styles.button}
-             title="Deck Options"
-             onPress={() => this.props.navigation.navigate('DeckDetail',
-                                                          { deleteDeck: params.deleteDeck,
-                                                            deck: deck })}
 
-           >
-           <Text style={styles.buttonText}>Deck Options</Text>
-           </TouchableOpacity>
         </View>
 
     );

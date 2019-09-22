@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native'
 
+export const blue = '#1d51a2'
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -7,21 +9,21 @@ export const styles = StyleSheet.create({
 
   },
   titleLarge: {
-    color: '#1d51a2',
+    color: blue,
     fontWeight: 'bold',
     fontSize: 40,
     marginLeft: 20,
     marginTop: 10
   },
   subtitleMedium: {
-    color: '#1d51a2',
+    color: blue,
     fontWeight: 'bold',
     fontSize: 20,
     margin: 20,
     textAlign: 'center'
   },
   subtitleMediumPartialTop: {
-    color: '#1d51a2',
+    color: blue,
     fontWeight: 'bold',
     fontSize: 20,
     marginTop: 20,
@@ -31,7 +33,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center'
   },
   subtitleMediumPartialBottom: {
-    color: '#1d51a2',
+    color: blue,
     fontWeight: 'bold',
     fontSize: 20,
     marginTop: 0,
@@ -48,13 +50,13 @@ export const styles = StyleSheet.create({
     borderBottomColor: '#cbd2d9'
   },
   clickable: {
-    color: 'blue',
+    color: blue,
     fontSize: 16,
     textAlign: 'center',
     marginBottom: 10
   },
   questionAnswer: {
-    color: '#1d51a2',
+    color: blue,
     fontWeight: 'bold',
     fontStyle: 'italic',
     fontSize: 18,
@@ -81,7 +83,7 @@ export const styles = StyleSheet.create({
   },
   button: {
     alignItems: 'center',
-    backgroundColor: '#1d51a2',
+    backgroundColor: blue,
     margin: 10,
     padding: 10,
     opacity: 10,
@@ -95,7 +97,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 10,
     padding: 10,
-    width: 100,
+    width: 120,
     borderRadius: 15,
     alignSelf: 'center'
   }

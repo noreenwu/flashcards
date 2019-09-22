@@ -6,7 +6,7 @@ export const RESULTS = 'results'
 import QuizResults from './QuizResults'
 import PropTypes from 'prop-types'
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
-import { styles } from './styles'
+import { styles, blue } from './styles'
 
 class QuizCard extends Component {
   state = {
@@ -110,10 +110,11 @@ class QuizCard extends Component {
 
                Question: { question }
              </Text>
-             <Text
-                 style={styles.clickable}
+             <TouchableOpacity
+                 style={Object.assign({}, styles.smallButton, {backgroundColor: blue})}
                  onPress={() => this.showAnswer()}
-             >Show Answer</Text>
+             ><Text style={styles.buttonText}>Show Answer</Text>
+             </TouchableOpacity>
 
            </View>
        )
@@ -151,7 +152,20 @@ class QuizCard extends Component {
                     onPress={() => { this.reset() }}
                   ><Text style={styles.buttonText}>Start Quiz Over</Text>
                   </TouchableOpacity>
+
+                  <TouchableOpacity
+                    style={styles.button}
+                    title="Deck Options"
+                    onPress={() => this.props.navFxn('DeckDetail',
+                                                      { deleteDeck: this.props.deleteDeck,
+                                                         deck: this.props.deck })}
+
+                  >
+                  <Text style={styles.buttonText}>Deck Options</Text>
+                  </TouchableOpacity>
               </View>
+
+
           )
      }
    }
@@ -159,6 +173,8 @@ class QuizCard extends Component {
 
 QuizCard.propTypes = {
   deck: PropTypes.object.isRequired,
+  deleteDeck: PropTypes.func.isRequired,
+  navFxn: PropTypes.func.isRequired
 }
 
 export default QuizCard
